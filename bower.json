@@ -1,0 +1,11 @@
+{
+  "name": "sendmail-js",
+  "version": "1.0.0",
+  "ignore": [
+    "node_modules",
+    "demo/libs"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
