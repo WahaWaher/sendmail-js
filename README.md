@@ -21,8 +21,8 @@ bower install --save sendmail-js
 <!-- jQuery -->
 <script src="libs/jquery/dist/jquery.min.js"></script>
 
-<!-- jquery.sendmail -->
-<script src="dist/jquery.sendmail"></script>
+<!-- jquery.sendmail.js -->
+<script src="dist/jquery.sendmail.js"></script>
 ```
 2. В корневую директорию сайта скопировать папку **"mail/"** со всем ее содержимым.
 В этой же папке, в файле **mail.php** изменить основной параметр: "**$recipients** // Получатели писем"<br>
