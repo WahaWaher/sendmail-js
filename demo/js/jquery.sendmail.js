@@ -1,8 +1,3 @@
-/* jQuery.sendMail
-Version: 1.0.0
-Author: Sergey Kravchenko
-Repo: https://github.com/WahaWaher/sendmail-js
-Contacts: wahawaher@gmail.com */
 ;(function($) {
 
 	var methods = {
@@ -45,9 +40,9 @@ Contacts: wahawaher@gmail.com */
 				$ths.addClass('sendmail-form');
 
 				// ID для генерации уник.числа (пространство имен, обраб.)
-				sets._submitNameSpaceID = randomInteger(10000000, 99999999);
+				sets._nsid = randInt(10000000, 99999999);
 
-				$ths.on('submit' + '.sm-' + sets._btnNameSpaceID, function() {
+				$ths.on('submit' + '.sm-' + sets._nsid, function() {
 					methods.send.call($ths);
 					return false;
 				});
@@ -59,7 +54,8 @@ Contacts: wahawaher@gmail.com */
 
 			});
 
-			return this;
+			return $(this);
+
 		},
 
 		destroy: function() {
@@ -67,10 +63,10 @@ Contacts: wahawaher@gmail.com */
 			var $ths = $(this), sets = $ths.data('settings');
 
 				$ths.removeClass('sendmail-form');
-				$ths.off( 'submit' + '.sm-' + sets._btnNameSpaceID );
+				$ths.off( 'submit' + '.sm-' + sets._nsid );
 				$ths.removeData();
 
-			return this;
+			return $(this);
 
 		},
 
@@ -84,7 +80,7 @@ Contacts: wahawaher@gmail.com */
 				methods.init.call($ths, newOpts);
 			else methods.init.call($ths, oldOpts);
 
-			return this;
+			return $(this);
 
 		},
 
@@ -148,26 +144,27 @@ Contacts: wahawaher@gmail.com */
 				}
 			});
 
-			return this;
+			return $(this);
 
 		},
 
 	};
 
 	// Генератор случайного числа
-	function randomInteger(min, max) {
+	function randInt(min, max) {
 		var rand = min - 0.5 + Math.random() * (max - min + 1)
 		rand = Math.round(rand);
 		return rand;
 	}
 
-	$.fn.sendMail = function(methodOrOptions) {
-		if ( methods[methodOrOptions] ) {
-			return methods[ methodOrOptions ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-		} else if ( typeof methodOrOptions === 'object' || ! methodOrOptions ) {
+	$.fn.sendMail = function(methOrOpts) {
+		if ( methods[methOrOpts] ) {
+			return methods[ methOrOpts ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+		} else if ( typeof methOrOpts === 'object' || ! methOrOpts ) {
 			methods.init.apply( this, arguments );
+			return this;
 		} else {
-			$.error( 'Method ' +  methodOrOptions + ' does not exist on jQuery.sendMail' );
+			$.error( 'Method ' +  methOrOpts + ' does not exist on jQuery.sendMail' );
 		}    
 	};
 

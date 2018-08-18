@@ -1,8 +1,13 @@
-<?php /* jQuery.sendMail
-Version: 1.0.0
-Author: Sergey Kravchenko
-Repo: https://github.com/WahaWaher/sendmail-js
-Contacts: wahawaher@gmail.com */
+<?php
+
+/**
+ * jQuery.sendMail
+ * Version: 1.0.2
+ * Repo: https://github.com/WahaWaher/sendmail-js
+ * Author: Sergey Kravchenko
+ * Contacts: wahawaher@gmail.com
+ * License: MIT
+ */
 
 // Настройки:
 $recipients = ['mailsend.js@gmail.com']; // Получатели писем
