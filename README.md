@@ -126,13 +126,13 @@ $error_page | string | Ссылка на страницу (если JS откл�
 ```
 ```html
 	<!-- Переопределение параметров для отдельных эл-ов через Data-атрибут: -->
-	<div class="example-form" data-sendmail="{
+	<form class="example-form" data-sendmail="{
 		reset: true
-	}"></div>
-	<div class="example-form" data-sendmail="{
+	}"></form>
+	<form class="example-form" data-sendmail="{
 		reset: false
 		url: 'new-mail.php'
-	}"></div>
+	}"></form>
 ```
 
 ### Переопределение параметров по умолчанию:
