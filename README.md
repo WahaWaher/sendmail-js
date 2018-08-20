@@ -26,14 +26,16 @@ bower install --save sendmail-js
 ```
 **2. В корневую директорию сайта скопировать папку "mail/" со всем ее содержимым.
 В этой же папке, в файле mail.php изменить основной параметр: "$recipients // Получатели писем" 
+Измените параметры $smtp_username и $smtp_password (логин и пароль от почтового ящика, с которого будут отправляться письма),
+а также другие настройки smtp, если Ваш ящик не на gmail.com.<br>
 [Все опции](https://github.com/WahaWaher/git-test/blob/master/README.md#%D0%9E%D0%BF%D1%86%D0%B8%D0%B8-mailphp)**<br>
 **3. Создать HTML-форму:**
 ```html
-<div class="example-form" action="mail/mail.php" method="POST">
+<form class="example-form" action="mail/mail.php" method="POST">
 	<input type="text" name="Имя">
 	<input type="email" name="E-mail">
 	<input type="submit" value="Отправить">
-</div>
+</form>
 ```
 **4. Инициализировать плагин на форме/ах:**
 ```javascript
