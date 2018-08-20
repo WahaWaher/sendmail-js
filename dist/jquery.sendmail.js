@@ -1,6 +1,6 @@
 /**
  * jQuery.sendMail
- * Version: 1.0.2
+ * Version: 1.0.3
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
@@ -18,17 +18,18 @@
 				url: 'mail/mail.php', // Путь к обработчику
 				reset: true, // Очистка полей формы после успешной отправки
 
-				beforeInit:    function(sets) {}, // Перед инициализацей
-				afterInit:     function(sets) {}, // После инициализации
-				beforeSend:    function(sets) {}, // Перед отправкой формы
-				afterSend:     function(sets) {}, // После попытки отправки формы, независимо от ответа 
-				onSuccess:     function(sets, response) {}, // Успешная отправка AJAX-запроса.
-				onAjaxError:   function(sets, response) {}, // Ошибка при отправке AJAX-запроса.
-				onServerError: function(sets, response) {} // Ошибка на сервере при отправке формы.
+				beforeInit:    function() {}, // Перед инициализацей
+				afterInit:     function() {}, // После инициализации
+				beforeSend:    function() {}, // Перед отправкой формы
+				afterSend:     function() {}, // После попытки отправки формы, независимо от ответа 
+				onSuccess:     function() {}, // Успешная отправка AJAX-запроса.
+				onAjaxError:   function() {}, // Ошибка при отправке AJAX-запроса.
+				onServerError: function() {} // Ошибка на сервере при отправке формы.
 
 			}, $.fn.sendMail.defaults);
 
 			this.each(function() {
+
 				var $ths = $(this);
 
 				if( $ths.data('_init') == true ) return false;
@@ -68,7 +69,9 @@
 		},
 
 		destroy: function() {
+
 			if( !$(this).data('_init') ) return false;
+
 			var $ths = $(this), sets = $ths.data('settings');
 
 				$ths.removeClass('sendmail-form');
@@ -80,6 +83,7 @@
 		},
 
 		reinit: function(newOpts) {
+
 			var $ths = $(this), sets = $ths.data('settings');
 
 			var oldOpts = $ths.data('options');
@@ -94,6 +98,7 @@
 		},
 
 		send: function() {
+
 			var $ths = $(this), sets = $ths.data('settings');
 
 			// Callback: beforeSend()
@@ -132,24 +137,24 @@
 				data: fd.data,
 				processData: fd.ajaxProcData,
   				contentType: fd.ajaxContType,
-				success: function( response ) {
-					if( !response.match(/sendmail-server-error/igm)  ) {
+				success: function( resp ) {
+					if( !resp.match(/sendmail-server-error/igm)  ) {
 						// Callback: onSuccess()
-						sets.onSuccess.call($ths, sets, response);
+						sets.onSuccess.call($ths, sets, resp);
 						// Очистка полей формы
 						if( sets.reset ) $ths.trigger('reset');
 					} else {
 						// Callback: onServerError()
-						sets.onServerError.call($ths, sets, response);
+						sets.onServerError.call($ths, sets, resp);
 					}
 					// Callback: afterSend()
 					sets.afterSend.call($ths, sets);
 				},
-				error: function( response ) {
+				error: function( resp ) {
 					// Callback: afterSend()
 					sets.afterSend.call($ths, sets);
 					// Callback: onAjaxError()
-					sets.onAjaxError.call($ths, sets, response);
+					sets.onAjaxError.call($ths, sets, resp);
 				}
 			});
 

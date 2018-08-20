@@ -2,7 +2,7 @@
 
 /**
  * jQuery.sendMail
- * Version: 1.0.2
+ * Version: 1.0.3
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
