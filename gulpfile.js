@@ -11,7 +11,7 @@ const gulp = require('gulp'),
 		headerComment = require('gulp-header-comment'),
 		headerInfo = `
 	    	jQuery.sendMail
-		   Version: 1.0.3
+		   Version: 1.0.5
 		   Repo: https://github.com/WahaWaher/sendmail-js
 		   Author: Sergey Kravchenko
 		   Contacts: wahawaher@gmail.com
