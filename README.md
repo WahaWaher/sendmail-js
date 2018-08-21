@@ -16,7 +16,7 @@ bower install --save sendmail-js
 
 ## Подключение:
 
-**1. Подключить jQuery и jquery.sendmail.js**
+1. Подключить jQuery и jquery.sendmail.js
 ```html
 <!-- jQuery -->
 <script src="libs/jquery/dist/jquery.min.js"></script>
@@ -24,12 +24,12 @@ bower install --save sendmail-js
 <!-- jquery.sendmail.js -->
 <script src="dist/jquery.sendmail.js"></script>
 ```
-**2. В корневую директорию сайта скопировать папку "mail/" со всем ее содержимым.
-В этой же папке, в файле mail.php изменить основной параметр: "$recipients // Получатели писем" 
-Измените параметры $smtp_username и $smtp_password (логин и пароль от почтового ящика, с которого будут отправляться письма),
+2. В корневую директорию сайта скопировать папку `mail/` со всем ее содержимым.
+В этой же папке, в файле `mail.php` изменить основной параметр: `$recipients // Получатели писем`
+Измените параметры `$smtp_username` и `$smtp_password` (логин и пароль от почтового ящика, с которого будут отправляться письма),
 а также другие настройки smtp, если Ваш ящик не на gmail.com.<br>
-[Все опции](https://github.com/WahaWaher/git-test/blob/master/README.md#%D0%9E%D0%BF%D1%86%D0%B8%D0%B8-mailphp)**<br>
-**3. Создать HTML-форму:**
+[Все опции](https://github.com/WahaWaher/git-test/blob/master/README.md#%D0%9E%D0%BF%D1%86%D0%B8%D0%B8-mailphp)<br>
+3. Создать HTML-форму:
 ```html
 <form class="example-form" action="mail/mail.php" method="POST">
 	<input type="text" name="Имя">
@@ -37,7 +37,7 @@ bower install --save sendmail-js
 	<input type="submit" value="Отправить">
 </form>
 ```
-**4. Инициализировать плагин на форме/ах:**
+4. Инициализировать плагин на форме/ах:
 ```javascript
 $('.example-form').sendMail({
 	// Параметры...
