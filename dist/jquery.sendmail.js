@@ -1,6 +1,6 @@
 /**
  * jQuery.sendMail
- * Version: 1.0.3
+ * Version: 1.0.6
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
@@ -74,9 +74,9 @@
 
 			var $ths = $(this), sets = $ths.data('settings');
 
-				$ths.removeClass('sendmail-form');
-				$ths.off( 'submit' + '.sm-' + sets._nsid );
-				$ths.removeData();
+				$ths.removeClass('sendmail-form')
+					 .off( 'submit' + '.sm-' + sets._nsid )
+					 .removeData();
 
 			return $(this);
 
@@ -102,7 +102,10 @@
 			var $ths = $(this), sets = $ths.data('settings');
 
 			// Callback: beforeSend()
-			sets.beforeSend.call($ths, sets);
+			if( sets.beforeSend.call($ths, sets) === false ) return false;
+
+			// Не отправлять письмо, если форма не валидна (для JQ Validate)
+			if( $.validator && !$ths.valid() ) return false;
 
 			// Нет полей для загрузки файлов? Использ. Serialize
 			if( !$ths.find('input[type="file"]').length ) {
