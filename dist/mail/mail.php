@@ -2,7 +2,7 @@
 
 /**
  * jQuery.sendMail
- * Version: 1.0.6
+ * Version: 1.0.7
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
@@ -29,8 +29,12 @@ $smtp_password = 'PH7Xu5uUnZ'; // Пароль почтового ящика, с
 // $success_page = $_SERVER['HTTP_ORIGIN'] . '/mail/success.html'; // Успешная отправка формы
 // $error_page   = $_SERVER['HTTP_ORIGIN'] . '/mail/error.html'; // Ошибка при отправке формы
 
+use PHPMailer\PHPMailer\PHPMailer;
 
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+
+	require 'PHPMailer\src\PHPMailer.php';
+	require 'PHPMailer\src\SMTP.php';
 
 	// Формирование HTML-таблицы с введенными данными:
 	function inputsTable($s) {
@@ -56,8 +60,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		return $infoTable .= '</table>';
 	}
 
-	require_once('phpmailer/PHPMailerAutoload.php');
-	$mail = new PHPMailer;
+	$mail = new PHPMailer();
 	$mail->CharSet = 'utf-8';
 	$mail->isSMTP();
 	$mail->Host = $smtp_host;
