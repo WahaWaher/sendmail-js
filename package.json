@@ -1,6 +1,6 @@
 {
   "name": "sendmail-js",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "jQuery plugin for sending webforms to E-mail via AJAX.",
   "main": "index.js",
   "scripts": {

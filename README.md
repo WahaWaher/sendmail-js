@@ -1,4 +1,4 @@
-jQuery SendMail Plugin <sup>1.0.7</sup>
+jQuery SendMail Plugin <sup>1.0.8</sup>
 -------
 _Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX. Плагин автоматически собирает значения всех полей формы и в виде HTML-таблицы отправляет на указанный почтовый ящик. Для удобной и надежной отправки писем через SMTP-сервер используется библиотека PHPMailer._
 
@@ -195,6 +195,19 @@ $('.test-form').sendMail({
 	}
 });
 ```
+- Запрет повторной отправки формы, мс
+```js
+$('.test-form').sendMail({
+	beforeSend: function(sets) {
+		var submitBtn = $(this).find('[type="submit"]'),
+			 timeout = 30000; // таймаут, мс
+		submitBtn.attr('disabled', true);
+		setTimeout(function() {
+			submitBtn.attr('disabled', false);
+		}, timeout);
+	}
+});
+```
 - SMPT-адреса серверов наиболее популярных почтовых сервисов (`mail.php`, `$smtp_host`):
 
 Сервис | SMTP-адрес
@@ -216,6 +229,10 @@ $smtp_auth     = true; // SMPT-аутентификация
 - PHP 5.5 или выше
 
 ## История изменений:
+### 1.0.8 - 07.10.2018
+- Исправлены проблемы с путями в файле `mail.php`
+- Незначительные правки в коде
+
 ### 1.0.7 - 22.09.2018
 - Обновление библиотеки PHPMailer до версии 6.0.5
 

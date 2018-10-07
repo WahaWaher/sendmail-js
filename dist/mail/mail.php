@@ -2,7 +2,7 @@
 
 /**
  * jQuery.sendMail
- * Version: 1.0.7
+ * Version: 1.0.8
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
@@ -11,10 +11,10 @@
 
 // Настройки:
 $recipients = ['mailsend.js@gmail.com']; // Получатели писем
-$subject   = 'Тема письма'; // Тема письма
+$subject   = 'Название сайта — Новая заявка'; // Тема письма
 
-$before_table = ''; // HTML-содержимое до таблицы
-$after_table  = ''; // HTML-содержимое после таблицы
+$before_table = '<h2 style="color:#222">Название сайта — Новая заявка</h2><p style="color:#222">Данные клиента:</p>'; // HTML-содержимое до таблицы
+$after_table  = '<i style="color:#bbb;font-size:12px">Сообщение отправлено с сайта <b>'.$_SERVER['SERVER_NAME'].'</b></i>'; // HTML-содержимое после таблицы
 $sep          = ', '; // Разделитель между значениями (использ. при форм. HTML-содержимого письма)
 
 // Настройки SMTP:
@@ -33,8 +33,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
-	require 'PHPMailer\src\PHPMailer.php';
-	require 'PHPMailer\src\SMTP.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/mail/phpmailer/src/PHPMailer.php';
+	require $_SERVER['DOCUMENT_ROOT'] . '/mail/phpmailer/src/SMTP.php';
 
 	// Формирование HTML-таблицы с введенными данными:
 	function inputsTable($s) {
