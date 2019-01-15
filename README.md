@@ -16,9 +16,6 @@ _Универсальный плагин отправки HTML-форм сред
 ```sh
 # Bower
 bower install --save sendmail-js
-
-# NPM
-npm install --save sendmail-js
 ```
 
 ## Подключение:
