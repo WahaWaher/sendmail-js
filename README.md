@@ -10,7 +10,7 @@ _Универсальный плагин отправки HTML-форм сред
 
 <br>
 
-[Демо](https://wahawaher.ru/sendmail-js#examples) | [Документация](https://wahawaher.ru/sendmail-js)
+[Демо](https://wahawaher.ru/sendmail-js#demo) | [Документация](https://wahawaher.ru/sendmail-js)
 
 ## Пакетные менеджеры:
 ```sh
