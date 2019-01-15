@@ -1,12 +1,21 @@
 {
   "name": "sendmail-js",
-  "version": "1.0.8",
-  "description": "jQuery plugin for sending webforms to E-mail via AJAX.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "2.0.0",
+  "description": "Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX",
+  "author": "WahaWaher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WahaWaher/sendmail-js.git"
   },
   "author": "WahaWaher",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "jquery",
+    "ajax",
+    "mail",
+    "sendmail"
+  ],
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.18.13",

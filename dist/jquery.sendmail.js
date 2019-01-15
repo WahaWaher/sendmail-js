@@ -1,6 +1,6 @@
 /**
  * jQuery.sendMail
- * Version: 1.0.8
+ * Version: 2.0.0
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
@@ -9,180 +9,296 @@
 
 ;(function($) {
 
-	var methods = {
+	/**
+	 * Настройки по умолчанию
+	 *
+	 * @default
+	 */
+	var defaults = {
+		url: 'mail/sendmail.php',
+		reset: true,
+		freeze: 0
+	};
 
-		init: function(options) {
+	/**
+	 * Конструктор
+	 *
+	 * @constructor
+	 * @param {HTMLElement} el - HTML-элемент в DOM
+	 * @param {Object=} options - Объект с параметрами
+	 */
+	var SendMail = function(el, options) {
+		this.form = el;
+		this.init(options);
+	}, __, meth = SendMail.prototype;
 
-			var defaults = $.extend(true, {
+	/**
+	 * Инициализация плагина
+	 *
+	 * @public
+	 * @param {object={}} options - Объект с параметрами
+	 * @example
+	 * 
+	 * $(element).sendMail('init', {});
+	 * $(element).sendMail('init');
+	 */
+	meth.init = function(options) {
+		var _ = this,
+			 $form = $(_.form);
 
-				url: 'mail/mail.php', // Путь к обработчику
-				reset: true, // Очистка полей формы после успешной отправки
+		if( _.inited === true || _.form.tagName != 'FORM' ) return;
 
-				beforeInit:    function() {}, // Перед инициализацей
-				afterInit:     function() {}, // После инициализации
-				beforeSend:    function() {}, // Перед отправкой формы
-				afterSend:     function() {}, // После попытки отправки формы, независимо от ответа 
-				onSuccess:     function() {}, // Успешная отправка AJAX-запроса.
-				onAjaxError:   function() {}, // Ошибка при отправке AJAX-запроса.
-				onServerError: function() {} // Ошибка на сервере при отправке формы.
+		// console.log( 'Метод: Init'/*, arguments, _*/ );
 
-			}, $.fn.sendMail.defaults);
+		// Настройки: По умолчанию
+		_.defaults =  $.extend(true, {}, defaults, $.fn.sendMail.defaults);
+		// Настройки: Пользовательские
+		_.options = options || {};
+		// Настройки: Data-атрибут
+		_.dataOptions = $form.data('sendmail') || {};
+		// Настройки: Объединенные
+		_.settings = $.extend(true, {}, _.defaults, _.options, _.dataOptions);
 
-			this.each(function() {
+		// Событие: 'beforeInit'
+		$form.trigger('beforeInit.sml', [_, _.form]);
 
-				var $ths = $(this);
+		_.nsid = __.getRndNum(10000, 99999);
+		_.stop = false;
 
-				if( $ths.data('_init') == true ) return false;
-
-				$ths.data('defaults', defaults);
-				$ths.data('options', options);
-
-				var data = $ths.attr('data-sendmail');
-				data = eval('(' + data + ')');
-				if( typeof(data) != 'object') data = {};
-
-				$ths.data('settings', $.extend(true, {}, defaults, options, data));
-				var sets = $ths.data('settings');
-
-				// Callback: beforeInit()
-				sets.beforeInit.call($ths, sets);
-
-				$ths.addClass('sendmail-form');
-
-				// ID для генерации уник.числа (пространство имен, обраб.)
-				sets._nsid = randInt(10000000, 99999999);
-
-				$ths.on('submit' + '.sm-' + sets._nsid, function() {
-					methods.send.call($ths);
-					return false;
-				});
-
-				$ths.data('_init', true);
-
-				// Callback: afterInit()
-				sets.afterInit.call($ths, sets);
-
+		$form
+			.addClass('sendmail-form')
+			.on('submit' + '.sml-' + _.nsid, function() {
+				_.send.call(_);
+				return false;
 			});
 
-			return $(this);
+		// Плгин инициализирован
+		_.inited = true;
 
-		},
+		// Событие: 'afterInit'
+		$form.trigger('afterInit.sml', [_, _.form]);
+		
+	};
 
-		destroy: function() {
+	/**
+	 * Отправка формы
+	 *
+	 * @public
+	 * @example
+	 * 
+	 * $(element).sendMail('send');
+	 */
+	meth.send = function() {
 
-			if( !$(this).data('_init') ) return false;
+		var _ = this,
+			 form = _.form,
+			 $form = $(form),
+			 sets = _.settings;
 
-			var $ths = $(this), sets = $ths.data('settings');
+		if( !_.inited || _.stop ) return;
 
-				$ths.removeClass('sendmail-form')
-					 .off( 'submit' + '.sm-' + sets._nsid )
-					 .removeData();
+		// Запрет повторной отправки
+		_.stop = true;
 
-			return $(this);
+		// console.log( 'Метод: Send', arguments );
 
-		},
+		// Событие: 'beforeSend'
+		$form.trigger('beforeSend.sml', [_, _.form]);
 
-		reinit: function(newOpts) {
+		// Нет полей для загрузки файлов? Использ. Serialize
+		if( !$form.find('input[type="file"]').length ) {
 
-			var $ths = $(this), sets = $ths.data('settings');
+			var fd = {
+				data: $form.serialize() + '&js=on',
+				ajaxProcData: true,
+				ajaxContType: 'application/x-www-form-urlencoded; charset=UTF-8'
+			}
 
-			var oldOpts = $ths.data('options');
-			methods.destroy.call($ths);
+			if( _.addData )
+				fd.data += '&' + $.param(_.addData);
 
-			if( newOpts && typeof(newOpts) == 'object' )
-				methods.init.call($ths, newOpts);
-			else methods.init.call($ths, oldOpts);
+		// Есть поля для загрузки файлов? Использ. FormData
+		} else {
 
-			return $(this);
+			var fd = {
+				data: new FormData(form),
+				ajaxProcData: false,
+				ajaxContType: false,
+			}
 
-		},
+			fd.data.append('js', 'on');
 
-		send: function() {
+			if( _.addData )
+				$.each(_.addData, function(key, value) {
+					fd.data.append(key, value);
+				});
 
-			var $ths = $(this), sets = $ths.data('settings');
+			// FormData не поддерживается? Отключить отправку AJAX-ом
+			// Поддержка FormData браузерами: IE 10+, Firefox 4.0+, Chrome 7+, Safari 5+, Opera 12+
+			if( !window.FormData ) {
 
-			// Callback: beforeSend()
-			if( sets.beforeSend.call($ths, sets) === false ) return false;
-
-			// Не отправлять письмо, если форма не валидна (для JQ Validate)
-			if( $.validator && !$ths.valid() ) return false;
-
-			// Нет полей для загрузки файлов? Использ. Serialize
-			if( !$ths.find('input[type="file"]').length ) {
-
-				var fd = {
-					data: $ths.serialize() + '&errorReport=true',
-					ajaxProcData: true, ajaxContType: 'application/x-www-form-urlencoded; charset=UTF-8'
-				}
-
-			// Есть поля для загрузки файлов? Использ. FormData
-			} else {
-
-				var fd = {
-					data: new FormData($ths.get(0)),
-					ajaxProcData: false, ajaxContType: false,
-				}
-
-				fd.data.append('errorReport', true);
-
-				// FormData не поддерживается? Отключить отправку AJAX-ом
-				// Поддержка FormData браузерами: IE 10+, Firefox 4.0+, Chrome 7+, Safari 5+, Opera 12+
-				if( !window.FormData ) {
-					$ths.unbind('submit');
-					$ths.trigger('submit');
-				}
+				$form
+					.off( 'submit.sml-' + _.nsid )
+					.trigger('submit');
 
 			}
 
-			$.ajax({
-				type: 'POST',
-				url: sets.url,
-				data: fd.data,
-				processData: fd.ajaxProcData,
-  				contentType: fd.ajaxContType,
-				success: function( resp ) {
-					if( !resp.match(/sendmail-server-error/igm)  ) {
-						// Callback: onSuccess()
-						sets.onSuccess.call($ths, sets, resp);
-						// Очистка полей формы
-						if( sets.reset ) $ths.trigger('reset');
-					} else {
-						// Callback: onServerError()
-						sets.onServerError.call($ths, sets, resp);
-					}
-					// Callback: afterSend()
-					sets.afterSend.call($ths, sets);
-				},
-				error: function( resp ) {
-					// Callback: afterSend()
-					sets.afterSend.call($ths, sets);
-					// Callback: onAjaxError()
-					sets.onAjaxError.call($ths, sets, resp);
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: sets.url,
+			data: fd.data,
+			processData: fd.ajaxProcData,
+			contentType: fd.ajaxContType,
+			success: function( resp, status, xhr ) {
+
+				if( xhr.getResponseHeader('sendmail') == 1 ) {
+
+					_.pullFreeze();
+
+					// Событие: 'onSuccess'
+					$form.trigger('onSuccess.sml', [_, _.form, resp]);
+
+					// Очистка полей формы
+					if( sets.reset ) $form.trigger('reset');
+
+				} else {
+
+					// Событие: 'onServerError'
+					$form.trigger('onServerError.sml', [_, _.form, resp]);
+
 				}
-			});
 
-			return $(this);
+				// Событие: 'afterSend'
+				$form.trigger('afterSend.sml', [_, _.form, resp]);
 
-		},
+			},
+			error: function( resp ) {
+
+				_.pullFreeze();
+
+				// Событие: 'afterSend'
+				$form.trigger('afterSend.sml', [_, _.form, resp]);
+
+				// Событие: 'onAjaxError'
+				$form.trigger('onAjaxError.sml', [_, _.form, resp]);
+
+			}
+
+		});
 
 	};
 
-	// Генератор случайного числа
-	function randInt(min, max) {
-		var rand = min - 0.5 + Math.random() * (max - min + 1)
-		rand = Math.round(rand);
-		return rand;
-	}
+	/**
+	 * Снимает запрет на отправку формы
+	 *
+	 * @public
+	 * @param {number=} time - Время заморозки, мс
+	 * 
+	 * 
+	 */
+	meth.pullFreeze = function(time) {
+		var _ = this;
 
-	$.fn.sendMail = function(methOrOpts) {
-		if ( methods[methOrOpts] ) {
-			return methods[ methOrOpts ].apply( this, Array.prototype.slice.call( arguments, 1 ));
-		} else if ( typeof methOrOpts === 'object' || ! methOrOpts ) {
-			methods.init.apply( this, arguments );
-			return this;
-		} else {
-			$.error( 'Method ' +  methOrOpts + ' does not exist on jQuery.sendMail' );
-		}    
+		setTimeout(function() {
+			_.stop = false;
+		}, time || this.settings.freeze);
+
 	};
+
+	/**
+	 * Деинициализация
+	 *
+	 * @public
+	 * @example
+	 * 
+	 * $(element).sendMail('destroy');
+	 */
+	meth.destroy = function() {
+		var _ = this,
+			 form = _.form;
+
+		if( !_.inited ) return;
+
+		// console.log( 'Метод: Destroy', arguments );
+
+		$(form)
+			.removeClass('sendmail-form')
+			.off( 'submit.sml-' + _.nsid );
+
+		delete form.SendMail;
+
+	};
+
+	/**
+	 * Реинициализация
+	 *
+	 * @public
+	 * @param {object=} newSets - Объект с новыми параметрами
+	 * @example
+	 * 
+	 * $(element).sendMail('reinit');
+	 * $(element).sendMail('reinit', {});
+	 */
+	meth.reinit = function(newSets) {
+		var _ = this,
+			 $form = $(_.form),
+			 sets = (typeof newSets == 'object' && Object.keys(newSets).length != 0 )
+					  ? newSets : $.extend(true, {}, _.settings);
+
+		// console.log( 'Метод: Reinit', arguments );
+
+		// Код здесь...
+		_.destroy();
+		$form.sendMail(sets);
+
+	};
+
+	__ = {
+
+		/**
+		 * Генерирует случайное число
+		 *
+		 * @private
+		 * @param {Number} min - от
+		 * @param {Number} max - до
+		 */
+		getRndNum: function(min, max) {
+			return Math.round(min - 0.5 + Math.random() * (max - min + 1));
+		}
+
+	};
+
+	$.fn.sendMail = function() {
+
+		var pn = 'SendMail',
+			 args = arguments,
+			 mth = args[0];
+
+		$.each(this, function(i, it) {
+			if( typeof mth == 'object' || typeof mth == 'undefined' )
+				it[pn] = crtInst(it, mth);
+			else if( mth === 'init' || mth === 'reinit' )
+				it[pn] ? getMeth(it, mth, args) : it[pn] = crtInst(it, args[1]);
+			else getMeth( it, mth, args );
+		});
+
+		function getMeth(it, mth, args) {
+			if( !(it[pn] instanceof SendMail) ) return;
+			if( !(mth in it[pn]) ) return;
+			return it[pn][mth].apply(it[pn], Array.prototype.slice.call(args, 1));
+		};
+
+		function crtInst(it, mth) {
+			if( it[pn] instanceof SendMail ) return;
+			return new SendMail(it, mth);
+		};
+
+		return this;
+	};
+
+	$.fn.sendMail.prototype = SendMail.prototype;
+	$.fn.sendMail.defaults = defaults;
 
 })(jQuery);

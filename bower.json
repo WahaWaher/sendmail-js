@@ -1,13 +1,18 @@
 {
   "name": "sendmail-js",
-  "version": "1.0.8",
+  "version": "2.0.0",
+  "description": "Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX",
+  "main": "index.js",
+  "authors": [
+    "WahaWaher"
+  ],
+  "license": "MIT",
+  "homepage": "",
   "ignore": [
     "node_modules",
     "demo/libs"
   ],
   "dependencies": {
-    "jquery": "^3.3.1",
-    "jquery-validation": "^1.17.0",
-    "animate.css": "^3.7.0"
+    "jquery": "^3.3.1"
   }
 }
