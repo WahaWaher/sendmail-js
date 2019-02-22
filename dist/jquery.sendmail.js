@@ -1,6 +1,6 @@
 /**
  * jQuery.sendMail
- * Version: 2.0.2
+ * Version: 2.0.3
  * Repo: https://github.com/WahaWaher/sendmail-js
  * Author: Sergey Kravchenko
  * Contacts: wahawaher@gmail.com
@@ -72,7 +72,7 @@
 				return false;
 			});
 
-		// Плгин инициализирован
+		// Плагин инициализирован
 		_.inited = true;
 
 		// Событие: 'afterInit'
@@ -157,16 +157,16 @@
 
 					_.pullFreeze();
 
-					// Событие: 'onSuccess'
-					$form.trigger('onSuccess.sml', [_, _.form, resp]);
+					// Событие: 'success'
+					$form.trigger('success.sml', [_, _.form, resp]);
 
 					// Очистка полей формы
 					if( sets.reset ) $form.trigger('reset');
 
 				} else {
 
-					// Событие: 'onServerError'
-					$form.trigger('onServerError.sml', [_, _.form, resp]);
+					// Событие: 'serverError'
+					$form.trigger('serverError.sml', [_, _.form, resp]);
 
 				}
 
@@ -181,8 +181,8 @@
 				// Событие: 'afterSend'
 				$form.trigger('afterSend.sml', [_, _.form, resp]);
 
-				// Событие: 'onAjaxError'
-				$form.trigger('onAjaxError.sml', [_, _.form, resp]);
+				// Событие: 'ajaxError'
+				$form.trigger('ajaxError.sml', [_, _.form, resp]);
 
 			}
 

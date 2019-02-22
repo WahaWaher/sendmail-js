@@ -10,7 +10,6 @@ git add .
 git commit -m "v2.0.2" // изм. версию на текущую
 git tag -a v2.0.2 -m "Version 2.0.2" // изм. версию на текущую
 git push origin master --tags
-npm publish // Публикация новой версии пакета
 
 bower info sendmail-js // Проверка пакета Bower
 npm view sendmail-js // Проверка пакета NPM https://www.npmjs.com/package/sendmail-js

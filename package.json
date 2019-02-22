@@ -1,8 +1,7 @@
 {
   "name": "sendmail-js",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX",
-  "author": "WahaWaher",
   "repository": {
     "type": "git",
     "url": "https://github.com/WahaWaher/sendmail-js.git"

@@ -77,19 +77,19 @@
 							// console.log( 'afterSend', e, inst, form, response );
 
 						 })
-						 .on('onSuccess.sml', function(e, inst, form, response) {
+						 .on('success.sml', function(e, inst, form, response) {
 
-							console.log( 'onSuccess', e, inst, form, response );
-
-						 })
-						 .on('onServerError.sml', function(e, inst, form, response) {
-
-							console.log( 'onServerError', response );
+							console.log( 'success', e, inst, form, response );
 
 						 })
-						 .on('onAjaxError.sml', function(e, inst, form, response) {
+						 .on('serverError.sml', function(e, inst, form, response) {
 
-							console.log( 'onAjaxError', e, inst, form, response );
+							console.log( 'serverError', response );
+
+						 })
+						 .on('ajaxError.sml', function(e, inst, form, response) {
+
+							console.log( 'ajaxError', e, inst, form, response );
 
 						 });
 
