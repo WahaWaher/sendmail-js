@@ -1,4 +1,4 @@
-ОБНОВЛЕНИЕ:
+﻿ОБНОВЛЕНИЕ:
 -----------
 - Внести необх. изменения в файлах
 - Проставить новые версии в файлах: README.md, gulpfile.js, package.json
@@ -7,8 +7,8 @@
 
 git status
 git add .
-git commit -m "v2.0.2" // изм. версию на текущую
-git tag -a v2.0.2 -m "Version 2.0.2" // изм. версию на текущую
+git commit -m "v2.0.3" // изм. версию на текущую
+git tag -a v2.0.3 -m "Version 2.0.3" // изм. версию на текущую
 git push origin master --tags
 
 bower info sendmail-js // Проверка пакета Bower
