@@ -12,14 +12,15 @@ _Универсальный плагин отправки HTML-форм сред
 
 [Демо](http://wahawaher.ru/sendmail-js#demo) | [Документация](http://wahawaher.ru/sendmail-js)
 
+## CDN:
+[https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/](https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/)
+
+
 ## Пакетные менеджеры:
 ```sh
 # Bower
 bower install --save sendmail-js
 ```
-
-## CDN:
-[https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/](https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/)
 
 ## Подключение:
 
