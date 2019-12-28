@@ -10,7 +10,7 @@ _Универсальный плагин отправки HTML-форм сред
 
 <br>
 
-[Демо](http://wahawaher.ru/sendmail-js#demo) | [Документация](http://wahawaher.ru/sendmail-js)
+[Демо](http://wahawaher.000webhostapp.com/sendmail-js#demo) | [Документация](http://wahawaher.000webhostapp.com/sendmail-js)
 
 ## CDN:
 [https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/](https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/)
