@@ -19,8 +19,10 @@ _Универсальный плагин отправки HTML-форм сред
 
 ## Пакетные менеджеры:
 ```sh
-# Bower
-bower install --save sendmail-js
+# NPM
+npm i sendmails-js
+# YARN
+yarn add sendmails-js
 ```
 
 ## Подключение:
