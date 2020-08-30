@@ -1,5 +1,3 @@
 $(document).ready(function() {
-
-	/* Demo JS here... */
-	
+  // Demo JS here...
 });

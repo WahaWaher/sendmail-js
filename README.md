@@ -1,4 +1,4 @@
-jQuery SendMail Plugin <sup>2.0.4</sup>
+jQuery SendMail Plugin <sup>2.0.5</sup>
 -------
 [![](https://data.jsdelivr.com/v1/package/npm/flextabs-js/badge)](https://www.jsdelivr.com/package/npm/flextabs-js) <br><br>
 _Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX. Плагин автоматически собирает значения всех полей формы и в виде HTML-таблицы отправляет на указанный почтовый ящик. Для удобной и надежной отправки писем через SMTP-сервер используется библиотека PHPMailer._

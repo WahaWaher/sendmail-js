@@ -3,3 +3,4 @@
 *.ini
 node_modules/
 demo/libs/
+help.txt
