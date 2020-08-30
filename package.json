@@ -1,6 +1,6 @@
 {
-  "name": "sendmail-js",
-  "version": "2.0.3",
+  "name": "sendmails-js",
+  "version": "2.0.4",
   "description": "Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
     "mail",
     "sendmail"
   ],
-  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "del": "^3.0.0",
