@@ -1,0 +1,112 @@
+$textColor: #222;
+$borderColor: transparent;
+$bgActiveColor: darken(#fff, 5%);
+$bgPassiveColor: darken(#fff, 2%);
+$iconColor: $textColor;
+
+/* Режим: Tabs */
+.ft-theme-default.ft-tabs {
+	
+	// Панель вкладок
+	>.ft-nav {
+		
+		// Вкладка
+		>.ft-tab {
+			color: $textColor;
+			text-decoration: none;
+			border: 1px solid $borderColor;
+			background-color: $bgPassiveColor;
+			padding: 10px 20px;
+			top: 1px;
+			position: relative;
+			z-index: 10;
+			&.active, &:hover {
+				color: $textColor;
+				text-decoration: none;
+				background-color: $bgActiveColor;
+				border-bottom-color: transparent;
+				&:before {
+					content: '';
+					display: block;
+					position: absolute;
+					width: 1px; height: 1px;
+					bottom: -1px;
+					left: -1px;
+					background-color: $borderColor;
+				}
+			}
+		}
+	}
+	
+	// Контейнер с содержимым вкладок
+	>.ft-contents {
+		color: $textColor;
+		padding: 10px 15px;
+		background-color: $bgActiveColor;
+
+		// Контейнер с содержимым отдельной вкладки
+		>.ft-content {}
+
+		// Вкладка для аккордеона
+		>.ft-tab {}
+
+	}
+
+}
+
+/* Режим: Accordion */
+.ft-theme-default.ft-accordion {
+	&.ft-container {}
+
+	// Панель вкладок
+	>.ft-nav {}
+	
+	// Контейнер с содержимым вкладок
+	>.ft-contents {
+		color: $textColor;
+
+		// Вкладка
+		>.ft-tab {
+			color: $textColor;
+			text-decoration: none;
+			border: 1px solid $borderColor;
+			background-color: $bgPassiveColor;
+			padding: 10px 15px;
+			margin: 3px 0;
+			&.active, &:hover {
+				color: $textColor;
+				text-decoration: none;
+				background-color: $bgActiveColor;
+			}
+		}
+
+		// Контейнер с содержимым отдельной вкладки
+		>.ft-content {
+			padding: 10px 15px;
+			background-color: #fff;
+			&.active {}
+		}
+
+		// Вкладка с иконкой
+		>.ft-tab-icon {
+
+			// Контейнер иконки
+			.ft-icon {
+
+				// Иконка
+				>svg {
+					fill: $iconColor;
+				}
+
+			}
+
+			// Вкладка с иконкой: активная
+			&.active {
+				.ft-icon {}
+			}
+
+		}
+
+	}
+	
+}

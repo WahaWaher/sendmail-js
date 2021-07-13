@@ -1,0 +1,200 @@
+// @import "bourbon";
+@import "_mixins";
+@import "_vars";
+@import "_base";
+@import "_patterns";
+@import "_libs_custom";
+
+:not(pre) > code[class*="language-"] {
+	padding: .1em .5em;
+	background: #efefef;
+	margin: 0 .25em;
+	border-radius: .1em;
+}
+
+:not(pre) > code[class*="language-none"] {
+	text-shadow: none;
+	color: #696969;
+	font-family: $dFont;
+}
+
+
+.sct {
+	margin-bottom: 75px;
+}
+
+label {
+	display: block;
+	width: 100%;
+	>span {
+		display: block;
+		font-size: 14px;
+		color: #a5a5a5;
+	}
+}
+
+.test-form {
+	select[multiple] {
+		height: 4em;
+	}
+}
+
+.site-header {
+	background-color: #f5f5f5;
+	h1 {
+		font-size: 2.2em;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 13px 0;
+		>small {
+			font-size: .6em;
+		}
+		>span {
+			color: $aColor;
+		}
+		.ver {
+			font-size: .35em;
+			margin-left: 5px;
+		}
+	}
+}
+
+.site-underheader {
+	padding: 15px 0;
+	background-color: #f9f9f9;
+	margin-bottom: 35px;
+	p {
+		margin: 0;
+		font-size: .95em;
+	}
+}
+
+.site-logo {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 10px;
+	transform: rotate(-15deg);
+	img, svg {
+		width: 2.8em;
+		height: 2.8em;
+	}
+}
+
+.header-infobar {
+	text-align: right;
+	float: right;
+	margin: 18px 0;
+}
+
+.info-icon {
+	vertical-align: middle;
+	display: inline-block;
+	>svg {
+		height: 2em;
+		width: 2em;
+	}
+	&:hover {
+		transform: scale(.98);
+		>svg {
+			color: $aColor;
+		}
+	}
+}
+
+.info-github {
+	color: #222;
+}
+
+.nav-doc {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 50px;
+	margin-top: 15px;
+	position: relative;
+	top: 0;
+	&.fixed {
+		position: fixed;
+		// transform: translateY(15px);
+		// padding-top: 25px;
+		transition: all .85s;
+	}
+	li {
+		font-size: .98em;
+		padding: .25em -0px;
+		text-transform: uppercase;
+		a {
+			display: block;
+			color: #5f5f5f;
+			&:hover {
+				color: $aColor;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+
+.undr-left {}
+.undr-right {
+	text-align: right;
+}
+
+.site-footer {
+	background-color: #f9f9f9;
+	padding: 15px 0;
+	p {
+		margin: 1em 0;
+		font-size: .95em;
+	}
+}
+
+.table-container {
+  width: 100%;
+  overflow-y: auto;
+  _overflow: auto;
+}
+
+
+/* EXAMPLES COMMON */
+.mrc-controls {
+	margin-top: 15px;
+}
+.method-controls {
+	margin: 50px 0;
+}
+
+/* QUICK-DEMO */
+.mrc-quick {
+	overflow: hidden;
+	max-height: 4em;
+	margin-bottom: 35px;
+	.mrc-shadow {
+		pointer-events: none;
+		position: absolute;
+		height: 100px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 999;
+		background: linear-gradient(to top, #fff 14%, rgba(0, 0, 0, 0) 100%);
+	}
+}
+
+.mrc-quick-shadow {
+	margin-bottom: 0;
+}
+
+/* Засветленный низ */
+.mrc-demo.shadow {
+	.mrc-shadow {
+		pointer-events: none;
+		position: absolute;
+		height: 100px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 999;
+		background: linear-gradient(to top, #fff 14%, rgba(0, 0, 0, 0) 100%);
+	}
+}

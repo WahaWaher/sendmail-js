@@ -1,0 +1,31 @@
+// @import "bourbon";
+@import "_vars";
+
+// Миксины
+
+// Font-Face генератор
+@mixin font-face($name, $path, $weight, $style) {
+	@font-face {
+		font-family: "#{$name}";
+		font-weight: #{$weight};
+		font-style: #{$style};
+		src: url("#{$path}.eot?#iefix")format("embedded-opentype"),
+			  url("#{$path}.woff2") format("woff2"),
+			  url("#{$path}.woff") format("woff"),
+			  url("#{$path}.ttf") format("truetype"),
+			  url("#{$path}.svg#PTSans") format("svg");
+	}
+}
+
+// Clearfix
+@mixin clearfix {
+  display: inline-block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}

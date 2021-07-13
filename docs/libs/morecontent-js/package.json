@@ -1,0 +1,30 @@
+{
+  "name": "morecontent-js",
+  "version": "1.0.0",
+  "description": "jQuery-плагин, скрывающий часть контента, выходящего за рамки указанной высоты (адаптивный спойлер)",
+  "author": "WahaWaher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WahaWaher/morecontent-js.git"
+  },
+  "keywords": [
+    "readmore",
+    "jquery",
+    "more"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header-comment": "^0.4.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.0",
+    "rename": "^1.0.4",
+    "run-sequence": "^2.2.1"
+  }
+}

@@ -1,0 +1,9 @@
+@media only screen and (max-width: 991px) {
+	.undr-right {
+		text-align: left;
+		margin-top: 15px;
+	}
+	.nav-doc.fixed {
+		position: static;
+	}
+}

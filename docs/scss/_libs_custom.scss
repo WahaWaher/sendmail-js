@@ -1,0 +1,48 @@
+// @import "bourbon";
+
+/* BackToTopButton: Start */
+#top-button {
+	display: none;
+	cursor: pointer;
+	position: fixed;
+	bottom: 15px;
+	right: -100px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background-color: rgba(#bbb, .75);
+	transition: all .35s ease;
+	z-index: 999999;
+	&.up:before, &.down:before {
+		content: '';
+		position: absolute;
+		width: 38px;
+		height: 38px;
+		top: 0;
+		left: 0;
+		background-repeat: no-repeat;
+		background-position: center;
+		border-radius: 50%;
+	}
+	&:hover { background-color: rgba($aColor, .85); }
+	&:active { background-color: rgba($aColor, .65); }
+}
+
+#top-button.up,
+#top-button.down {
+	right: 15px;
+}
+
+#top-button.up {
+	&:before {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjQ5LjcwNywzOS4xNDYgMzIuNzA3LDIyIDMxLjI5MywyMiAxNC4yOTMsMzkuMTQ2IDE1LjcwNyw0MC42MzQgMzIsMjQuMzc3IDQ4LjI5Myw0MC42MTUiLz48L3N2Zz4=);
+		// background-image: url('data:image/svg+xml;utf8,<svg width="26" height="26" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon fill="#fff" points="49.707,39.146 32.707,22 31.293,22 14.293,39.146 15.707,40.634 32,24.377 48.293,40.615"/></svg>');
+	}
+}
+#top-button.down {
+	&:before {
+		background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBmaWxsPSIjZmZmIiBwb2ludHM9IjQ4LjI5MywyMy4yOTMgMzIsMzkuNTg2IDE1LjcwNywyMy4yOTMgMTQuMjkzLDI0Ljg1NCAzMS4yOTMsNDIgMzIuNzA3LDQyIDQ5LjcwNywyNC44NTQiLz48L3N2Zz4=);
+		// background-image: url('data:image/svg+xml;utf8,<svg width="26" height="26" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><polygon fill="#fff" points="48.293,23.293 32,39.586 15.707,23.293 14.293,24.854 31.293,42 32.707,42 49.707,24.854"/></svg>');
+	}
+}
+/* BackToTopButton: End */

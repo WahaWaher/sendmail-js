@@ -1,0 +1,10 @@
+/**
+ * jQuery FlexTabs Theme Default
+ * Version: 2.0.0
+ * Repo: https://github.com/WahaWaher/flextabs-js
+ * Author: Sergey Kravchenko
+ * Contacts: wahawaher@gmail.com
+ * License: MIT
+ */
+
+.ft-theme-default.ft-tabs>.ft-nav>.ft-tab{color:#222;text-decoration:none;border:1px solid transparent;background-color:#fafafa;padding:10px 20px;top:1px;position:relative;z-index:1}.ft-theme-default.ft-tabs>.ft-nav>.ft-tab.active,.ft-theme-default.ft-tabs>.ft-nav>.ft-tab:hover{color:#222;text-decoration:none;background-color:#f2f2f2;border-bottom-color:transparent}.ft-theme-default.ft-tabs>.ft-nav>.ft-tab.active:before,.ft-theme-default.ft-tabs>.ft-nav>.ft-tab:hover:before{content:"";display:block;position:absolute;width:1px;height:1px;bottom:-1px;left:-1px;background-color:transparent}.ft-theme-default.ft-tabs>.ft-contents{color:#222;padding:10px 15px;background-color:#f2f2f2}.ft-theme-default.ft-accordion>.ft-contents{color:#222}.ft-theme-default.ft-accordion>.ft-contents>.ft-tab{color:#222;text-decoration:none;border:1px solid transparent;background-color:#fafafa;padding:10px 15px;margin:3px 0}.ft-theme-default.ft-accordion>.ft-contents>.ft-tab.active,.ft-theme-default.ft-accordion>.ft-contents>.ft-tab:hover{color:#222;text-decoration:none;background-color:#f2f2f2}.ft-theme-default.ft-accordion>.ft-contents>.ft-content{padding:10px 15px;background-color:#fff}.ft-theme-default.ft-accordion>.ft-contents>.ft-tab-icon .ft-icon>svg{fill:#222}

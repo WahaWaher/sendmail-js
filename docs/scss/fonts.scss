@@ -1,0 +1,10 @@
+// @import "bourbon";
+@import "_mixins";
+
+// https://developer.mozilla.org/ru/docs/Web/CSS/font-weight
+
+// 400, Regular
+@include font-face("Play", "../../fonts/PlayRegular/PlayRegular", $weight: 400, $style: normal);
+
+// 700, Bold
+@include font-face("Play", "../../fonts/PlayBold/PlayBold", $weight: 700, $style: normal);

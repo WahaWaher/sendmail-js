@@ -1,0 +1,45 @@
+// @import "bourbon";
+@import "_mixins";
+@import "_vars";
+
+// /*==========  DESKTOP FIRST METHOD  ==========*/
+// /*========== Large Devices, Wide Screens ==========*/
+@media only screen and (max-width : 1199px) {}
+// /*========== Medium Devices, Desktops ==========*/
+@media only screen and (max-width : 991px) {
+
+	.undr-right {
+		text-align: left;
+		margin-top: 15px;
+	}
+
+	.nav-doc {
+		&.fixed {
+			position: static;
+		}
+	}
+
+}
+// /*========== Small Devices, Tablets ==========*/
+@media only screen and (max-width : 767px) {}
+// /*========== Extra Small Devices, Phones ==========*/
+@media only screen and (max-width : 479px) {}
+// /*========== Custom, iPhone Retina ==========*/
+@media only screen and (max-width : 320px) {}
+
+// /*==========  MOBILE FIRST METHOD  ==========*/
+// /*========== Custom, iPhone Retina ==========*/
+@media only screen and (min-width : 320px) {}
+// /*========== Extra Small Devices, Phones ==========*/
+@media only screen and (min-width : 480px) {}
+// /*========== Small Devices, Tablets ==========*/
+@media only screen and (min-width : 768px) {}
+// /*========== Medium Devices, Desktops ==========*/
+@media only screen and (min-width : 992px) {}
+// /*========== Large Devices, Wide Screens ==========*/
+@media only screen and (min-width : 1200px) {
+	// .container { width: 1200px; } // Нестандартный контейнер
+}
+
+// /*==========  HEADER MEDIA QUERIES  ==========*/
+// /*==========  CUSTOM MEDIA QUERIES  ==========*/

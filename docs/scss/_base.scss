@@ -1,0 +1,122 @@
+// @import "bourbon";
+@import "_mixins";
+@import "_vars";
+
+// БАЗОВЫЕ СТИЛИ
+
+html {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+body {
+	min-width: 320px;
+	min-height: 500px;
+	font-family: $dFont;
+	font-size: 15px;
+	line-height: 1.35;
+	// letter-spacing: 0.05em; // 50(photoshop)/1000 = Xem(css)
+	color: $bColor;
+	background-color: #fff;
+	overflow-x: hidden;
+	position: relative;
+}
+
+section, header, footer, main { position: relative; }
+p {}
+
+// Заголовки
+h1, h2, h3, h4, h5, h6,
+.cst-title-1,
+.cst-title-2,
+.cst-title-3,
+.cst-title-4,
+.cst-title-5,
+.cst-title-6 {
+	font-family: $dFont;
+	// font-weight: bold;
+	// line-height: 1;
+	// margin: 0.5em 0;
+}
+
+h1, .cst-title-1 {}
+h2, .cst-title-2 {}
+h3, .cst-title-3 {}
+h4, .cst-title-4 {}
+h5, .cst-title-5 {}
+h6, .cst-title-6 {}
+
+// Ссылки
+a {
+	color: $aColor;
+	// text-decoration: underline;
+	// transition: all $trs;
+	&:hover, &:focus {
+		color: $aColor;
+		// text-decoration: none;
+	} &:active {}
+}
+
+// Элементы форм
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+input[type="login"],
+input[type="password"],
+select, textarea  {
+	display: block;
+	width: 100%;
+	margin: 5px 0;
+	&:hover, &:focus {} &:active {}
+	&:disabled {}
+	&:disabled:hover { cursor: not-allowed; }
+}
+
+button, input[type="submit"], 
+input[type="button"], input[type="reset"] {
+	&:hover, &:focus {} &:active {}
+	&:disabled {}
+	&:disabled:hover { cursor: not-allowed; }
+}
+
+textarea:disabled { resize: none; }
+iframe { border: none; }
+
+// Цвет выделения
+// ::selection      { color: #fff; background: $aColor; }
+// ::-moz-selection { color: #fff; background: $aColor; }
+
+// Обводка элементов
+:active, :hover, :focus {
+	outline: 0 !important;
+	outline-offset: 0 !important;
+}
+
+// Заполнители
+*::-webkit-input-placeholder { color: $gColor; opacity: 1; }
+*:-moz-placeholder           { color: $gColor; opacity: 1; }
+*::-moz-placeholder          { color: $gColor; opacity: 1; }
+*:-ms-input-placeholder      { color: $gColor; opacity: 1; }
+body input:focus:required:invalid, body textarea:focus:required:invalid { color: $gColor; }
+body input:required:valid, body textarea:required:valid                 { color: $gColor; }
+
+// Заполнители по фокусу
+// (opacity, text-indent + , text-indent -)
+// *::-webkit-input-placeholder       {text-indent: 0px; transition: text-indent 0.5s ease;}
+// *::-moz-placeholder                {text-indent: 0px; transition: text-indent 0.5s ease;}
+// *:-moz-placeholder                 {text-indent: 0px; transition: text-indent 0.5s ease;}
+// *:-ms-input-placeholder            {text-indent: 0px; transition: text-indent 0.5s ease;}
+// *:focus::-webkit-input-placeholder {text-indent: 1280px; transition: text-indent 0.5s ease;}
+// *:focus::-moz-placeholder          {text-indent: 1280px; transition: text-indent 0.5s ease;}
+// *:focus:-moz-placeholder           {text-indent: 1280px; transition: text-indent 0.5s ease;}
+// *:focus:-ms-input-placeholder      {text-indent: 1280px; transition: text-indent 0.5s ease;}

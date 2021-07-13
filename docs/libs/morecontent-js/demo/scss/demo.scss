@@ -1,0 +1,32 @@
+// Self
+.example {
+	// CSS Height
+	// max-height: 250px;
+	// overflow: hidden;
+
+	// padding: 15px;
+	// margin: 15px auto;
+	transition: color .85s;
+}
+
+// Content
+.mrc-content {
+	// padding: 0 15px;
+	// background-color: #f4f4f4;
+}
+
+// Button
+.mrc-btn-wrap {
+	display: inline-block;
+	margin: 15px 0;
+}
+
+// Shadow
+.mrc-shadow {
+	pointer-events: none;
+	position: absolute;
+	height: 100px;
+	left: 0; right: 0; bottom: 0;
+	z-index: 999;
+	background: linear-gradient(to top, #fff 14%, rgba(0,0,0, 0) 100%);
+}

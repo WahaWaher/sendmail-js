@@ -1,0 +1,31 @@
+{
+  "name": "flextabs-js",
+  "version": "2.0.0",
+  "description": "jQuery-плагин для создания адаптивных вкладок (табы, аккордеон, спойлер)",
+  "main": "index.js",
+  "authors": [
+    "WahaWaher"
+  ],
+  "license": "MIT",
+  "homepage": "http://wahawaher.ru/flextabs-js/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "demo/libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "13bfae97c1dc8161c57b770a3fbf7602331aacb4"
+  },
+  "_source": "https://github.com/WahaWaher/flextabs-js.git",
+  "_target": "^2.0.0",
+  "_originalSource": "flextabs-js"
+}

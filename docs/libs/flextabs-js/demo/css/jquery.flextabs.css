@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* Режим: Tabs */
+.ft-tabs > .ft-nav > .ft-tab {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.ft-tabs > .ft-contents {
+	padding-top: .05px;
+	padding-bottom: .05px;
+	position: relative;
+	z-index: 10;
+}
+
+.ft-tabs > .ft-contents > .ft-content {
+	overflow: hidden;
+}
+
+.ft-tabs > .ft-contents > .ft-tab {
+	display: none;
+}
+
+/* Режим: Accordion */
+.ft-accordion > .ft-nav {
+	display: none;
+}
+
+.ft-accordion > .ft-contents > .ft-tab {
+	display: block;
+	cursor: pointer;
+}
+
+.ft-accordion > .ft-contents > .ft-content {
+	padding-top: .05px;
+	padding-bottom: .05px;
+	overflow: hidden;
+}
+
+.ft-accordion > .ft-contents > .ft-tab-icon {
+	padding-right: 3.3em;
+	position: relative;
+}
+
+.ft-accordion > .ft-contents > .ft-tab-icon .ft-icon {
+	width: 1.6em;
+	height: 1.6em;
+	position: absolute;
+	top: 50%;
+	right: 1em;
+	-webkit-transform: translateY(-50%);
+	    -ms-transform: translateY(-50%);
+	        transform: translateY(-50%);
+	-webkit-transition: all .2s;
+	-o-transition: all .2s;
+	transition: all .2s;
+}
+
+.ft-accordion > .ft-contents > .ft-tab-icon .ft-icon > svg {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+}
+
+.ft-accordion > .ft-contents > .ft-tab-icon.active .ft-icon {
+	-webkit-transform: translateY(-50%) rotate(180deg);
+	    -ms-transform: translateY(-50%) rotate(180deg);
+	        transform: translateY(-50%) rotate(180deg);
+}

@@ -1,0 +1,53 @@
+{
+  "name": "materialize",
+  "description": "A modern responsive front-end framework based on Material Design",
+  "keywords": [
+    "css",
+    "js",
+    "sass",
+    "mobile-first",
+    "responsive",
+    "front-end",
+    "framework",
+    "ux",
+    "material",
+    "design"
+  ],
+  "main": [
+    "dist/js/materialize.js",
+    "dist/css/materialize.css"
+  ],
+  "ignore": [
+    "jade/",
+    ".gitignore",
+    "CNAME",
+    "css/",
+    "bower.json",
+    "README.md",
+    "images/",
+    "js/jquery.timeago.js",
+    "js/init.js",
+    "js/prism.js",
+    "res/",
+    "sass/style.scss",
+    "sass/ghpages-materialize.scss",
+    "**/*.html",
+    "**/*.zip",
+    "**/*.txt",
+    "sitemap.xml",
+    "package.json",
+    "Gruntfile.js"
+  ],
+  "homepage": "https://github.com/Dogfalo/materialize",
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "6752a855c521fb20da29d11ef4b94206f0b0ca37"
+  },
+  "_source": "https://github.com/Dogfalo/materialize.git",
+  "_target": "^1.0.0",
+  "_originalSource": "materialize",
+  "_direct": true
+}

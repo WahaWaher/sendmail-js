@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery.flexTabs</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Bootstrap Grid System 3.3.4 + Normalizer -->
+	<style>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}:before,:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px;-webkit-tap-highlight-color:transparent}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}input,button,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}figure{margin:0}img{vertical-align:middle}.img-responsive{display:block;max-width:100%;height:auto}.img-rounded{border-radius:6px}.img-thumbnail{padding:4px;line-height:1.42857143;background-color:#fff;border:1px solid #ddd;border-radius:4px;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out;display:inline-block;max-width:100%;height:auto}.img-circle{border-radius:50%}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}.sr-only-focusable:active,.sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}@media (min-width: 768px){.container{width:750px}}@media (min-width: 992px){.container{width:970px}}@media (min-width: 1200px){.container{width:1170px}}.container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}.row{margin-left:-15px;margin-right:-15px}.col-xs-1,.col-sm-1,.col-md-1,.col-lg-1,.col-xs-2,.col-sm-2,.col-md-2,.col-lg-2,.col-xs-3,.col-sm-3,.col-md-3,.col-lg-3,.col-xs-4,.col-sm-4,.col-md-4,.col-lg-4,.col-xs-5,.col-sm-5,.col-md-5,.col-lg-5,.col-xs-6,.col-sm-6,.col-md-6,.col-lg-6,.col-xs-7,.col-sm-7,.col-md-7,.col-lg-7,.col-xs-8,.col-sm-8,.col-md-8,.col-lg-8,.col-xs-9,.col-sm-9,.col-md-9,.col-lg-9,.col-xs-10,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-11,.col-sm-11,.col-md-11,.col-lg-11,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12{float:left}.col-xs-12{width:100%}.col-xs-11{width:91.66666667%}.col-xs-10{width:83.33333333%}.col-xs-9{width:75%}.col-xs-8{width:66.66666667%}.col-xs-7{width:58.33333333%}.col-xs-6{width:50%}.col-xs-5{width:41.66666667%}.col-xs-4{width:33.33333333%}.col-xs-3{width:25%}.col-xs-2{width:16.66666667%}.col-xs-1{width:8.33333333%}.col-xs-pull-12{right:100%}.col-xs-pull-11{right:91.66666667%}.col-xs-pull-10{right:83.33333333%}.col-xs-pull-9{right:75%}.col-xs-pull-8{right:66.66666667%}.col-xs-pull-7{right:58.33333333%}.col-xs-pull-6{right:50%}.col-xs-pull-5{right:41.66666667%}.col-xs-pull-4{right:33.33333333%}.col-xs-pull-3{right:25%}.col-xs-pull-2{right:16.66666667%}.col-xs-pull-1{right:8.33333333%}.col-xs-pull-0{right:auto}.col-xs-push-12{left:100%}.col-xs-push-11{left:91.66666667%}.col-xs-push-10{left:83.33333333%}.col-xs-push-9{left:75%}.col-xs-push-8{left:66.66666667%}.col-xs-push-7{left:58.33333333%}.col-xs-push-6{left:50%}.col-xs-push-5{left:41.66666667%}.col-xs-push-4{left:33.33333333%}.col-xs-push-3{left:25%}.col-xs-push-2{left:16.66666667%}.col-xs-push-1{left:8.33333333%}.col-xs-push-0{left:auto}.col-xs-offset-12{margin-left:100%}.col-xs-offset-11{margin-left:91.66666667%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-0{margin-left:0}@media (min-width: 768px){.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12{float:left}.col-sm-12{width:100%}.col-sm-11{width:91.66666667%}.col-sm-10{width:83.33333333%}.col-sm-9{width:75%}.col-sm-8{width:66.66666667%}.col-sm-7{width:58.33333333%}.col-sm-6{width:50%}.col-sm-5{width:41.66666667%}.col-sm-4{width:33.33333333%}.col-sm-3{width:25%}.col-sm-2{width:16.66666667%}.col-sm-1{width:8.33333333%}.col-sm-pull-12{right:100%}.col-sm-pull-11{right:91.66666667%}.col-sm-pull-10{right:83.33333333%}.col-sm-pull-9{right:75%}.col-sm-pull-8{right:66.66666667%}.col-sm-pull-7{right:58.33333333%}.col-sm-pull-6{right:50%}.col-sm-pull-5{right:41.66666667%}.col-sm-pull-4{right:33.33333333%}.col-sm-pull-3{right:25%}.col-sm-pull-2{right:16.66666667%}.col-sm-pull-1{right:8.33333333%}.col-sm-pull-0{right:auto}.col-sm-push-12{left:100%}.col-sm-push-11{left:91.66666667%}.col-sm-push-10{left:83.33333333%}.col-sm-push-9{left:75%}.col-sm-push-8{left:66.66666667%}.col-sm-push-7{left:58.33333333%}.col-sm-push-6{left:50%}.col-sm-push-5{left:41.66666667%}.col-sm-push-4{left:33.33333333%}.col-sm-push-3{left:25%}.col-sm-push-2{left:16.66666667%}.col-sm-push-1{left:8.33333333%}.col-sm-push-0{left:auto}.col-sm-offset-12{margin-left:100%}.col-sm-offset-11{margin-left:91.66666667%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width: 992px){.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12{float:left}.col-md-12{width:100%}.col-md-11{width:91.66666667%}.col-md-10{width:83.33333333%}.col-md-9{width:75%}.col-md-8{width:66.66666667%}.col-md-7{width:58.33333333%}.col-md-6{width:50%}.col-md-5{width:41.66666667%}.col-md-4{width:33.33333333%}.col-md-3{width:25%}.col-md-2{width:16.66666667%}.col-md-1{width:8.33333333%}.col-md-pull-12{right:100%}.col-md-pull-11{right:91.66666667%}.col-md-pull-10{right:83.33333333%}.col-md-pull-9{right:75%}.col-md-pull-8{right:66.66666667%}.col-md-pull-7{right:58.33333333%}.col-md-pull-6{right:50%}.col-md-pull-5{right:41.66666667%}.col-md-pull-4{right:33.33333333%}.col-md-pull-3{right:25%}.col-md-pull-2{right:16.66666667%}.col-md-pull-1{right:8.33333333%}.col-md-pull-0{right:auto}.col-md-push-12{left:100%}.col-md-push-11{left:91.66666667%}.col-md-push-10{left:83.33333333%}.col-md-push-9{left:75%}.col-md-push-8{left:66.66666667%}.col-md-push-7{left:58.33333333%}.col-md-push-6{left:50%}.col-md-push-5{left:41.66666667%}.col-md-push-4{left:33.33333333%}.col-md-push-3{left:25%}.col-md-push-2{left:16.66666667%}.col-md-push-1{left:8.33333333%}.col-md-push-0{left:auto}.col-md-offset-12{margin-left:100%}.col-md-offset-11{margin-left:91.66666667%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-9{margin-left:75%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-6{margin-left:50%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-3{margin-left:25%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width: 1200px){.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{float:left}.col-lg-12{width:100%}.col-lg-11{width:91.66666667%}.col-lg-10{width:83.33333333%}.col-lg-9{width:75%}.col-lg-8{width:66.66666667%}.col-lg-7{width:58.33333333%}.col-lg-6{width:50%}.col-lg-5{width:41.66666667%}.col-lg-4{width:33.33333333%}.col-lg-3{width:25%}.col-lg-2{width:16.66666667%}.col-lg-1{width:8.33333333%}.col-lg-pull-12{right:100%}.col-lg-pull-11{right:91.66666667%}.col-lg-pull-10{right:83.33333333%}.col-lg-pull-9{right:75%}.col-lg-pull-8{right:66.66666667%}.col-lg-pull-7{right:58.33333333%}.col-lg-pull-6{right:50%}.col-lg-pull-5{right:41.66666667%}.col-lg-pull-4{right:33.33333333%}.col-lg-pull-3{right:25%}.col-lg-pull-2{right:16.66666667%}.col-lg-pull-1{right:8.33333333%}.col-lg-pull-0{right:auto}.col-lg-push-12{left:100%}.col-lg-push-11{left:91.66666667%}.col-lg-push-10{left:83.33333333%}.col-lg-push-9{left:75%}.col-lg-push-8{left:66.66666667%}.col-lg-push-7{left:58.33333333%}.col-lg-push-6{left:50%}.col-lg-push-5{left:41.66666667%}.col-lg-push-4{left:33.33333333%}.col-lg-push-3{left:25%}.col-lg-push-2{left:16.66666667%}.col-lg-push-1{left:8.33333333%}.col-lg-push-0{left:auto}.col-lg-offset-12{margin-left:100%}.col-lg-offset-11{margin-left:91.66666667%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}.clearfix:before,.clearfix:after,.container:before,.container:after,.container-fluid:before,.container-fluid:after,.row:before,.row:after{content:" ";display:table}.clearfix:after,.container:after,.container-fluid:after,.row:after{clear:both}.center-block{display:block;margin-left:auto;margin-right:auto}.pull-right{float:right!important}.pull-left{float:left!important}.hide{display:none!important}.show{display:block!important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important;visibility:hidden!important}.affix{position:fixed}.visible-xs,.visible-sm,.visible-md,.visible-lg{display:none!important}.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block{display:none!important}@media (max-width: 767px){.visible-xs{display:block!important}table.visible-xs{display:table}tr.visible-xs{display:table-row!important}th.visible-xs,td.visible-xs{display:table-cell!important}.visible-xs-block{display:block!important}.visible-xs-inline{display:inline!important}.visible-xs-inline-block{display:inline-block!important}}@media (min-width: 768px) and (max-width: 991px){.visible-sm{display:block!important}table.visible-sm{display:table}tr.visible-sm{display:table-row!important}th.visible-sm,td.visible-sm{display:table-cell!important}.visible-sm-block{display:block!important}.visible-sm-inline{display:inline!important}.visible-sm-inline-block{display:inline-block!important}}@media (min-width: 992px) and (max-width: 1199px){.visible-md{display:block!important}table.visible-md{display:table}tr.visible-md{display:table-row!important}th.visible-md,td.visible-md{display:table-cell!important}.visible-md-block{display:block!important}.visible-md-inline{display:inline!important}.visible-md-inline-block{display:inline-block!important}}@media (min-width: 1200px){.visible-lg{display:block!important}table.visible-lg{display:table}tr.visible-lg{display:table-row!important}th.visible-lg,td.visible-lg{display:table-cell!important}}@media (min-width: 1200px){.visible-lg-block{display:block!important}}@media (min-width: 1200px){.visible-lg-inline{display:inline!important}}@media (min-width: 1200px){.visible-lg-inline-block{display:inline-block!important}}@media (max-width: 767px){.hidden-xs{display:none!important}}@media (min-width: 768px) and (max-width: 991px){.hidden-sm{display:none!important}}@media (min-width: 992px) and (max-width: 1199px){.hidden-md{display:none!important}}@media (min-width: 1200px){.hidden-lg{display:none!important}}.visible-print{display:none!important}@media print{.visible-print{display:block!important}table.visible-print{display:table}tr.visible-print{display:table-row!important}th.visible-print,td.visible-print{display:table-cell!important}}.visible-print-block{display:none!important}@media print{.visible-print-block{display:block!important}}.visible-print-inline{display:none!important}@media print{.visible-print-inline{display:inline!important}}.visible-print-inline-block{display:none!important}@media print{.visible-print-inline-block{display:inline-block!important}}@media print{.hidden-print{display:none!important}}</style>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+	<link rel="stylesheet" href="css/jquery.flextabs.css">
+	<link rel="stylesheet" href="css/jquery.flextabs.theme-default.css">
+	<link rel="stylesheet" href="css/demo.css">
+
+</head>
+<body>
+	
+
+	<div class="container">
+		
+		<h1>jQuery.flextabs</h1>
+
+		<!-- <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Щеке рот предупредила раз залетают языком журчит бросил рекламных над, города речью, его предложения себя это выйти обеспечивает грустный вскоре. Деревни ipsum, алфавит переписывается продолжил большой необходимыми заманивший меня переписали до использовало вскоре о страна точках! Страну маленький своего, домах его свой мир своих первую, злых буквоград все там обеспечивает одна гор рекламных возвращайся по всей. Ведущими алфавит переулка маленький свой рыбного на берегу снова эта переписывается, власти щеке жизни рыбными, реторический путь ручеек, вершину использовало свой вскоре ее. Даже точках текстов переулка залетают снова решила заманивший взгляд алфавит которое, жаренные рекламных подзаголовок, своих наш скатился, собрал, прямо сих дороге несколько парадигматическая рукописи. Диких по всей предупреждал меня, курсивных маленький которое, его проектах вопроса предложения раз единственное родного прямо вершину! Заголовок знаках продолжил текстов вопрос залетают путь наш? Строчка переписывается пустился заглавных путь маленькая имени которой составитель свой, раз ручеек lorem, коварный своих мир выйти жаренные но там безорфографичный! Рыбного предупреждал возвращайся коварный подпоясал большого диких переписывается деревни несколько свой жаренные, речью одна маленький толку, страну силуэт. Залетают если продолжил, даль текстами это напоивший оксмокс языкового одна. Эта за одна предупреждал это коварных грамматики, решила приставка языкового великий наш повстречался реторический океана заголовок речью если вопрос не вскоре оксмокс безопасную агенство продолжил. Ты взобравшись, образ то. Запятой буквенных взобравшись, переулка о ему, заглавных коварных предупреждал, она имени взгляд страну свою меня мир, продолжил своего! Заглавных домах напоивший раз меня большой сих переписали по всей обеспечивает проектах маленькая несколько предупреждал от всех продолжил лучше своих, всеми, парадигматическая если все что встретил щеке имени подпоясал грамматики последний! Грамматики семантика послушавшись заголовок моей лучше приставка использовало строчка безопасную продолжил точках встретил назад имени, снова повстречался запятой свою путь алфавит большого бросил заманивший, выйти он образ решила? Решила проектах сбить дороге его, от всех. Предложения рекламных мир пунктуация жизни последний страна, lorem на берегу выйти курсивных буквоград по всей все, инициал живет запятой коварных за. Языком назад предупредила, домах, жизни они его маленький за вопроса взобравшись. Предупреждал свою домах единственное, города имени курсивных жизни, осталось прямо языком ты до встретил сбить парадигматическая. Решила если семь встретил lorem единственное коварных запятой рукопись мир маленький вскоре живет обеспечивает речью переулка он, по всей, использовало власти свой имеет одна последний букв подпоясал? Знаках свое большой возвращайся. Путь рукопись меня вдали всемогущая бросил на берегу. Пор на берегу, большого буквоград гор вскоре продолжил вопрос свой возвращайся рот диких продолжил, переулка проектах ее. Правилами использовало силуэт на берегу продолжил дороге меня запятой, это он парадигматическая большой. Живет обеспечивает взгляд решила всеми родного свое буквенных прямо инициал щеке агенство, на берегу повстречался власти они журчит. Запятых силуэт рыбного эта переписывается великий безопасную обеспечивает даже диких семантика проектах, города свой своего взгляд предупреждал путь маленький, на берегу которое жизни грустный, буквенных. Текстами решила подпоясал строчка страна выйти свой единственное грамматики его она осталось! Все даже своего раз рыбного мир, использовало сих однажды дорогу переписывается выйти, которой парадигматическая жаренные, то дал образ подзаголовок, живет продолжил инициал от всех назад проектах языком взгляд. Залетают переписывается имени, единственное раз, алфавит она заманивший города дорогу вдали безорфографичный запятой своих рекламных!</p> -->
+
+		<!-- Публичные методы -->
+		<h2>Публичные методы:</h2>
+		<div class="method-controls">
+			<button data-meth="init">Init</button>
+			<button data-meth="destroy">Destroy</button>
+			<button data-meth="reinit">Reinit</button>
+			<span>|</span>
+			<button data-meth="changeMode:tabs">ChangeMode: Tabs</button>
+			<button data-meth="changeMode:accordion">ChangeMode: Accordion</button>
+		</div>
+		<hr>
+		<div class="method-controls">
+			<button data-control-meth="switch">Switch</button>
+			<input type="number" min="0" max="100" value="0">
+			<span>|</span>
+			<button data-control-meth="open">Open</button>
+			<input type="number" min="0" max="100" value="0">
+			<span>|</span>
+			<button data-control-meth="close">Close</button>
+			<input type="number" min="0" max="100" value="0">
+			<span>|</span>
+			<button data-control-meth="closeAll">CloseAll</button>
+		</div>
+
+		<hr>
+
+		<!-- Вкладки -->
+		<div id="animals" data-ft style="display: none;">
+
+			<nav>
+
+				<!-- <div>Бобр</div>
+				<div>Мангуст</div>
+				<div>Кенгуру</div>
+				<div>Ирбис</div>
+				<div>Носорог</div> -->
+
+				<a href="#bobr" class="active">Бобр</a>
+				<a href="#mangust" class=""><span>Мангуст</span></a>
+				<a href="#kenguru" class="">Кенгуру</a>
+				<a href="#irbis" class=""><span>Ирбис</span></a>
+				<a href="#nosorog" class="">Носорог</a>
+
+			</nav>
+
+			<div>
+
+				<div>
+					<p>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые, отряда Грызуны, класса Млекопитающие.</p>
+				</div>
+
+				<div>
+					<p>Мангустовые (лат. Herpestidae) – это семейство животных подотряда Кошкообразные, отряда Хищные, инфракласса Плацентарные, класса Млекопитающие, или Звери, подтипа Позвоночные, типа Хордовые. Оно было выделено из семейства Виверровых (лат. Viverridae) и стало самостоятельным.</p>
+				</div>
+
+				<div>
+					<p>Кенгуру – это млекопитающее, которое относится к отряду Двурезцовые сумчатые (лат. Diprotodontia), семейству Кенгуровые (лат. Macropodidae). Среди этих животных много исчезающих и редких видов.</p>
+				</div>
+
+				<div>
+					<p>Снежный барс, он же ирбис, или снежный леопард (лат. Panthera uncia, Uncia uncia) – млекопитающее отряда хищные, семейства кошачьи. Ранее его выделяли в отдельный род Снежные барсы (лат. Uncia), представленный единственным видом Uncia uncia.</p>
+				</div>
+
+				<div>
+					<p>Носорог – это животное класса млекопитающие, подкласса звери, инфракласса плацентарные, надотряда лавразиотерии, отряда непарнокопытные, семейства носороговые (лат. Rhinocerotidae).</p>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<hr>
+
+		<div id="taboids" data-ft style="display: none;">
+
+			<nav>
+				<a href="#n1" class="active">Вкладка первая</a>
+				<a href="#n2" class=""><span>Вторая вкладка</span></a>
+			</nav>
+
+			<div>
+
+				<div>
+					<p>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые, отряда Грызуны, класса Млекопитающие.</p>
+				</div>
+
+				<div>
+					<p>Мангустовые (лат. Herpestidae) – это семейство животных подотряда Кошкообразные, отряда Хищные, инфракласса Плацентарные, класса Млекопитающие, или Звери, подтипа Позвоночные, типа Хордовые. Оно было выделено из семейства Виверровых (лат. Viverridae) и стало самостоятельным.</p>
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<!-- Аккордеон -->
+		<!-- <div data-ft='accordion' style="display: none;">
+
+			<a href="#bobr" class="active">Бобр</a>
+			<div id="bobr">
+				<p>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые, отряда Грызуны, класса Млекопитающие.</p>
+			</div>
+
+			<a href="#mangust">Мангуст</a>
+			<div id="mangust">
+				<p>Мангустовые (лат. Herpestidae) – это семейство животных подотряда Кошкообразные, отряда Хищные, инфракласса Плацентарные, класса Млекопитающие, или Звери, подтипа Позвоночные, типа Хордовые. Оно было выделено из семейства Виверровых (лат. Viverridae) и стало самостоятельным.</p>
+			</div>
+
+			<a href="#kenguru" class="">Кенгуру</a>
+			<div id="kenguru">
+				<p>Кенгуру – это млекопитающее, которое относится к отряду Двурезцовые сумчатые (лат. Diprotodontia), семейству Кенгуровые (лат. Macropodidae). Среди этих животных много исчезающих и редких видов.</p>
+			</div>
+
+			<a href="#irbis" class="">Ирбис</a>
+			<div id="irbis">
+				<p>Снежный барс, он же ирбис, или снежный леопард (лат. Panthera uncia, Uncia uncia) – млекопитающее отряда хищные, семейства кошачьи. Ранее его выделяли в отдельный род Снежные барсы (лат. Uncia), представленный единственным видом Uncia uncia.</p>
+			</div>
+
+			<a href="#nosorog" class="">Носорог</a>
+			<div id="nosorog">
+				<p>Носорог – это животное класса млекопитающие, подкласса звери, инфракласса плацентарные, надотряда лавразиотерии, отряда непарнокопытные, семейства носороговые (лат. Rhinocerotidae).</p>
+			</div>
+
+		</div> -->
+
+
+		<!-- Spoiler -->
+		<!-- <div data-ft='accordion'>
+			<a href="#bobr" class="active">Бобр</a>
+			<div>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые,
+			отряда Грызуны, класса Млекопитающие.</div>
+
+			<a href="#bobr">Бобр</a>
+			<div>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые,
+			отряда Грызуны, класса Млекопитающие.</div>
+
+			<a href="#bobr">Бобр</a>
+			<div>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые,
+			отряда Грызуны, класса Млекопитающие.</div>
+
+			<a href="#bobr">Бобр</a>
+			<div>Бобры (лат. Castor) – это единственный современный род животных семейства Бобровые,
+			отряда Грызуны, класса Млекопитающие.</div>
+		</div> -->
+
+
+
+	<p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Лучше путь назад если по всей буквенных дороге семь которое повстречался, строчка переписывается это страна lorem! Меня он, взобравшись свой рекламных коварных собрал, сих, назад языком текст океана, проектах не буквоград заглавных что языкового наш текста запятой дорогу? Не, до, грустный. Снова там текстов составитель всемогущая грустный великий журчит, от всех, агенство которое вопрос одна имеет предупредила на берегу раз прямо переписали языкового моей пустился жаренные он дорогу семь, заголовок? Рот все раз запятых запятой своих точках образ предупреждал. Лучше коварный переулка по всей своего рот за злых заманивший страна, дорогу знаках предложения они меня ручеек коварных рыбного живет города последний агенство собрал заголовок дал ведущими все до раз. Знаках, заглавных ведущими моей он, дороге щеке даже грустный безопасную свой, свой, залетают! Букв знаках маленький даже семантика образ мир по всей речью сих языком точках пустился, коварных города, алфавит рот использовало рыбными необходимыми строчка журчит текст, страна великий, бросил своего! Своего над, реторический снова запятых алфавит единственное они свой оксмокс рукописи лучше буквенных пунктуация за власти скатился возвращайся себя точках ему вершину предупреждал, по всей большого, первую текстов. Родного взобравшись но, продолжил языкового! Даже щеке семантика собрал алфавит его большой, последний ipsum осталось грамматики агенство до, предупреждал решила? Образ которой обеспечивает пунктуация маленький переписывается, океана, мир большого осталось меня о лучше послушавшись заголовок деревни знаках, парадигматическая родного рыбными текста дороге толку себя инициал? Ему ручеек вскоре запятых текста бросил на берегу рыбными, единственное, запятой текстов речью? Заманивший текстов коварный предупреждал. Реторический все своего ты его, она, использовало пустился языком послушавшись ipsum решила то взобравшись ее не рыбными текста коварный скатился свою единственное рукопись, приставка встретил курсивных. Использовало, маленький, то? Рыбного города гор обеспечивает одна приставка возвращайся вопрос напоивший меня необходимыми. Журчит текстов жаренные то над, о, переписали ведущими. Переписывается океана даль алфавит что пустился силуэт моей рекламных парадигматическая безопасную взобравшись заманивший за текстов грустный своих сбить, мир вершину буквенных домах имеет повстречался? Которое своего силуэт буквоград, первую океана но ipsum снова! Ты составитель, образ щеке обеспечивает повстречался ipsum, подпоясал, назад меня своих ему своего домах диких свой переписали! Текста коварный себя прямо, гор, запятых строчка? Города текстов ему, там пояс даль моей всеми свой, речью скатился коварных решила до составитель путь великий грамматики запятой маленький послушавшись предупредила встретил. Ведущими даль, дал всеми власти предложения сих, даже реторический, жаренные назад пояс наш коварных не грамматики рукописи речью рыбными рекламных. Свой, своего своих строчка. Не буквоград коварный, его строчка великий снова щеке необходимыми приставка переулка эта имени, скатился журчит. Реторический, текстами единственное. Даже строчка семь, точках, правилами на берегу не вершину предупреждал его предупредила раз, океана. Предложения продолжил букв буквоград, образ которой коварных снова решила выйти города вскоре проектах большой рукописи наш текст напоивший строчка последний дороге всеми гор сих там послушавшись, переписывается ipsum. Вопроса продолжил агенство однажды. Страну текста повстречался моей вскоре первую, эта ему страна, предупредила свое, агенство большой возвращайся прямо дорогу. Маленький агенство рыбными, она дороге составитель не вопрос рот текста текстов гор, деревни наш! Маленькая над послушавшись коварных взгляд снова грустный осталось одна единственное заголовок рыбного.</p>
+
+
+	</div>
+
+	<script src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="js/jquery.flextabs.js"></script>
+	<script src="js/demo.js"></script>
+	
+</body>
+</html>

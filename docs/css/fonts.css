@@ -1,0 +1,13 @@
+@font-face {
+	font-family: "Play";
+	font-weight: 400;
+	font-style: normal;
+	src: url("../fonts/PlayRegular/PlayRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/PlayRegular/PlayRegular.woff2") format("woff2"), url("../fonts/PlayRegular/PlayRegular.woff") format("woff"), url("../fonts/PlayRegular/PlayRegular.ttf") format("truetype"), url("../fonts/PlayRegular/PlayRegular.svg#PTSans") format("svg");
+}
+
+@font-face {
+	font-family: "Play";
+	font-weight: 700;
+	font-style: normal;
+	src: url("../fonts/PlayBold/PlayBold.eot?#iefix") format("embedded-opentype"), url("../fonts/PlayBold/PlayBold.woff2") format("woff2"), url("../fonts/PlayBold/PlayBold.woff") format("woff"), url("../fonts/PlayBold/PlayBold.ttf") format("truetype"), url("../fonts/PlayBold/PlayBold.svg#PTSans") format("svg");
+}

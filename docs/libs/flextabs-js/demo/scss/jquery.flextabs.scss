@@ -1,0 +1,103 @@
+/* Режим: Tabs */
+.ft-tabs {
+
+	// Панель вкладок
+	>.ft-nav {
+		
+		// Вкладка
+		>.ft-tab {
+			display: inline-block;
+			cursor: pointer;
+			&.active {}
+		}
+	}
+	
+	// Контейнер с содержимым вкладок
+	>.ft-contents {
+		padding-top: .05px;
+		padding-bottom: .05px;
+		position: relative;
+		z-index: 10;
+
+		// Контейнер с содержимым отдельной вкладки
+		>.ft-content {
+			overflow: hidden;
+			&.active {}
+		}
+
+		// Вкладка для аккордеона
+		>.ft-tab {
+			display: none;
+		}
+
+	}
+
+}
+
+
+
+/* Режим: Accordion */
+.ft-accordion {
+	&.ft-container {}
+
+	// Панель вкладок
+	>.ft-nav {
+		display: none;
+	}
+	
+	// Контейнер с содержимым вкладок
+	>.ft-contents {
+
+		// Вкладка
+		>.ft-tab {
+			display: block;
+			cursor: pointer;
+			&.active {}
+		}
+
+		// Контейнер с содержимым отдельной вкладки
+		>.ft-content {
+			padding-top: .05px;
+			padding-bottom: .05px;
+			overflow: hidden;
+			&.active {}
+		}
+
+		// Вкладка с иконкой
+		>.ft-tab-icon {
+			padding-right: 3.3em;
+			position: relative;
+
+			// Контейнер иконки
+			.ft-icon {
+				width: 1.6em;
+				height: 1.6em;
+				position: absolute;
+				top: 50%; right: 1em;
+				transform: translateY(-50%);
+				transition: all .2s;
+
+				// Иконка
+				>svg {
+					display: block;
+					position: absolute;
+					top: 50%; left: 50%;
+					width: 100%;
+					height: 100%;
+					transform: translate(-50%, -50%);
+				}
+
+			}
+
+			// Вкладка с иконкой: активная
+			&.active {
+				.ft-icon {
+					transform: translateY(-50%) rotate(180deg);
+				}
+			}
+
+		}
+
+	}
+	
+}

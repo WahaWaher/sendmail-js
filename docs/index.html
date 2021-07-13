@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+  <title>jQuery SendMail — Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX</title>
+
+  <meta name="description" content="jQuery SendMail — Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX.">
+  <meta name="keywords" content="jquery, jq, js, sendmail, ajax, phpmailer, smtp">
+
+  <!-- Favicons  -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Bootstrap Grid System 3.3.4 + Normalizer -->
+  <style>html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}:before,:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px;-webkit-tap-highlight-color:transparent}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}input,button,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}figure{margin:0}img{vertical-align:middle}.img-responsive{display:block;max-width:100%;height:auto}.img-rounded{border-radius:6px}.img-thumbnail{padding:4px;line-height:1.42857143;background-color:#fff;border:1px solid #ddd;border-radius:4px;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out;display:inline-block;max-width:100%;height:auto}.img-circle{border-radius:50%}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}.sr-only-focusable:active,.sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}@media (min-width: 768px){.container{width:750px}}@media (min-width: 992px){.container{width:970px}}@media (min-width: 1200px){.container{width:1170px}}.container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}.row{margin-left:-15px;margin-right:-15px}.col-xs-1,.col-sm-1,.col-md-1,.col-lg-1,.col-xs-2,.col-sm-2,.col-md-2,.col-lg-2,.col-xs-3,.col-sm-3,.col-md-3,.col-lg-3,.col-xs-4,.col-sm-4,.col-md-4,.col-lg-4,.col-xs-5,.col-sm-5,.col-md-5,.col-lg-5,.col-xs-6,.col-sm-6,.col-md-6,.col-lg-6,.col-xs-7,.col-sm-7,.col-md-7,.col-lg-7,.col-xs-8,.col-sm-8,.col-md-8,.col-lg-8,.col-xs-9,.col-sm-9,.col-md-9,.col-lg-9,.col-xs-10,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-11,.col-sm-11,.col-md-11,.col-lg-11,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12{position:relative;min-height:1px;padding-left:15px;padding-right:15px}.col-xs-1,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9,.col-xs-10,.col-xs-11,.col-xs-12{float:left}.col-xs-12{width:100%}.col-xs-11{width:91.66666667%}.col-xs-10{width:83.33333333%}.col-xs-9{width:75%}.col-xs-8{width:66.66666667%}.col-xs-7{width:58.33333333%}.col-xs-6{width:50%}.col-xs-5{width:41.66666667%}.col-xs-4{width:33.33333333%}.col-xs-3{width:25%}.col-xs-2{width:16.66666667%}.col-xs-1{width:8.33333333%}.col-xs-pull-12{right:100%}.col-xs-pull-11{right:91.66666667%}.col-xs-pull-10{right:83.33333333%}.col-xs-pull-9{right:75%}.col-xs-pull-8{right:66.66666667%}.col-xs-pull-7{right:58.33333333%}.col-xs-pull-6{right:50%}.col-xs-pull-5{right:41.66666667%}.col-xs-pull-4{right:33.33333333%}.col-xs-pull-3{right:25%}.col-xs-pull-2{right:16.66666667%}.col-xs-pull-1{right:8.33333333%}.col-xs-pull-0{right:auto}.col-xs-push-12{left:100%}.col-xs-push-11{left:91.66666667%}.col-xs-push-10{left:83.33333333%}.col-xs-push-9{left:75%}.col-xs-push-8{left:66.66666667%}.col-xs-push-7{left:58.33333333%}.col-xs-push-6{left:50%}.col-xs-push-5{left:41.66666667%}.col-xs-push-4{left:33.33333333%}.col-xs-push-3{left:25%}.col-xs-push-2{left:16.66666667%}.col-xs-push-1{left:8.33333333%}.col-xs-push-0{left:auto}.col-xs-offset-12{margin-left:100%}.col-xs-offset-11{margin-left:91.66666667%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-0{margin-left:0}@media (min-width: 768px){.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm-12{float:left}.col-sm-12{width:100%}.col-sm-11{width:91.66666667%}.col-sm-10{width:83.33333333%}.col-sm-9{width:75%}.col-sm-8{width:66.66666667%}.col-sm-7{width:58.33333333%}.col-sm-6{width:50%}.col-sm-5{width:41.66666667%}.col-sm-4{width:33.33333333%}.col-sm-3{width:25%}.col-sm-2{width:16.66666667%}.col-sm-1{width:8.33333333%}.col-sm-pull-12{right:100%}.col-sm-pull-11{right:91.66666667%}.col-sm-pull-10{right:83.33333333%}.col-sm-pull-9{right:75%}.col-sm-pull-8{right:66.66666667%}.col-sm-pull-7{right:58.33333333%}.col-sm-pull-6{right:50%}.col-sm-pull-5{right:41.66666667%}.col-sm-pull-4{right:33.33333333%}.col-sm-pull-3{right:25%}.col-sm-pull-2{right:16.66666667%}.col-sm-pull-1{right:8.33333333%}.col-sm-pull-0{right:auto}.col-sm-push-12{left:100%}.col-sm-push-11{left:91.66666667%}.col-sm-push-10{left:83.33333333%}.col-sm-push-9{left:75%}.col-sm-push-8{left:66.66666667%}.col-sm-push-7{left:58.33333333%}.col-sm-push-6{left:50%}.col-sm-push-5{left:41.66666667%}.col-sm-push-4{left:33.33333333%}.col-sm-push-3{left:25%}.col-sm-push-2{left:16.66666667%}.col-sm-push-1{left:8.33333333%}.col-sm-push-0{left:auto}.col-sm-offset-12{margin-left:100%}.col-sm-offset-11{margin-left:91.66666667%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width: 992px){.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12{float:left}.col-md-12{width:100%}.col-md-11{width:91.66666667%}.col-md-10{width:83.33333333%}.col-md-9{width:75%}.col-md-8{width:66.66666667%}.col-md-7{width:58.33333333%}.col-md-6{width:50%}.col-md-5{width:41.66666667%}.col-md-4{width:33.33333333%}.col-md-3{width:25%}.col-md-2{width:16.66666667%}.col-md-1{width:8.33333333%}.col-md-pull-12{right:100%}.col-md-pull-11{right:91.66666667%}.col-md-pull-10{right:83.33333333%}.col-md-pull-9{right:75%}.col-md-pull-8{right:66.66666667%}.col-md-pull-7{right:58.33333333%}.col-md-pull-6{right:50%}.col-md-pull-5{right:41.66666667%}.col-md-pull-4{right:33.33333333%}.col-md-pull-3{right:25%}.col-md-pull-2{right:16.66666667%}.col-md-pull-1{right:8.33333333%}.col-md-pull-0{right:auto}.col-md-push-12{left:100%}.col-md-push-11{left:91.66666667%}.col-md-push-10{left:83.33333333%}.col-md-push-9{left:75%}.col-md-push-8{left:66.66666667%}.col-md-push-7{left:58.33333333%}.col-md-push-6{left:50%}.col-md-push-5{left:41.66666667%}.col-md-push-4{left:33.33333333%}.col-md-push-3{left:25%}.col-md-push-2{left:16.66666667%}.col-md-push-1{left:8.33333333%}.col-md-push-0{left:auto}.col-md-offset-12{margin-left:100%}.col-md-offset-11{margin-left:91.66666667%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-9{margin-left:75%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-6{margin-left:50%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-3{margin-left:25%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width: 1200px){.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,.col-lg-11,.col-lg-12{float:left}.col-lg-12{width:100%}.col-lg-11{width:91.66666667%}.col-lg-10{width:83.33333333%}.col-lg-9{width:75%}.col-lg-8{width:66.66666667%}.col-lg-7{width:58.33333333%}.col-lg-6{width:50%}.col-lg-5{width:41.66666667%}.col-lg-4{width:33.33333333%}.col-lg-3{width:25%}.col-lg-2{width:16.66666667%}.col-lg-1{width:8.33333333%}.col-lg-pull-12{right:100%}.col-lg-pull-11{right:91.66666667%}.col-lg-pull-10{right:83.33333333%}.col-lg-pull-9{right:75%}.col-lg-pull-8{right:66.66666667%}.col-lg-pull-7{right:58.33333333%}.col-lg-pull-6{right:50%}.col-lg-pull-5{right:41.66666667%}.col-lg-pull-4{right:33.33333333%}.col-lg-pull-3{right:25%}.col-lg-pull-2{right:16.66666667%}.col-lg-pull-1{right:8.33333333%}.col-lg-pull-0{right:auto}.col-lg-push-12{left:100%}.col-lg-push-11{left:91.66666667%}.col-lg-push-10{left:83.33333333%}.col-lg-push-9{left:75%}.col-lg-push-8{left:66.66666667%}.col-lg-push-7{left:58.33333333%}.col-lg-push-6{left:50%}.col-lg-push-5{left:41.66666667%}.col-lg-push-4{left:33.33333333%}.col-lg-push-3{left:25%}.col-lg-push-2{left:16.66666667%}.col-lg-push-1{left:8.33333333%}.col-lg-push-0{left:auto}.col-lg-offset-12{margin-left:100%}.col-lg-offset-11{margin-left:91.66666667%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}.clearfix:before,.clearfix:after,.container:before,.container:after,.container-fluid:before,.container-fluid:after,.row:before,.row:after{content:" ";display:table}.clearfix:after,.container:after,.container-fluid:after,.row:after{clear:both}.center-block{display:block;margin-left:auto;margin-right:auto}.pull-right{float:right!important}.pull-left{float:left!important}.hide{display:none!important}.show{display:block!important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important;visibility:hidden!important}.affix{position:fixed}.visible-xs,.visible-sm,.visible-md,.visible-lg{display:none!important}.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block{display:none!important}@media (max-width: 767px){.visible-xs{display:block!important}table.visible-xs{display:table}tr.visible-xs{display:table-row!important}th.visible-xs,td.visible-xs{display:table-cell!important}.visible-xs-block{display:block!important}.visible-xs-inline{display:inline!important}.visible-xs-inline-block{display:inline-block!important}}@media (min-width: 768px) and (max-width: 991px){.visible-sm{display:block!important}table.visible-sm{display:table}tr.visible-sm{display:table-row!important}th.visible-sm,td.visible-sm{display:table-cell!important}.visible-sm-block{display:block!important}.visible-sm-inline{display:inline!important}.visible-sm-inline-block{display:inline-block!important}}@media (min-width: 992px) and (max-width: 1199px){.visible-md{display:block!important}table.visible-md{display:table}tr.visible-md{display:table-row!important}th.visible-md,td.visible-md{display:table-cell!important}.visible-md-block{display:block!important}.visible-md-inline{display:inline!important}.visible-md-inline-block{display:inline-block!important}}@media (min-width: 1200px){.visible-lg{display:block!important}table.visible-lg{display:table}tr.visible-lg{display:table-row!important}th.visible-lg,td.visible-lg{display:table-cell!important}}@media (min-width: 1200px){.visible-lg-block{display:block!important}}@media (min-width: 1200px){.visible-lg-inline{display:inline!important}}@media (min-width: 1200px){.visible-lg-inline-block{display:inline-block!important}}@media (max-width: 767px){.hidden-xs{display:none!important}}@media (min-width: 768px) and (max-width: 991px){.hidden-sm{display:none!important}}@media (min-width: 992px) and (max-width: 1199px){.hidden-md{display:none!important}}@media (min-width: 1200px){.hidden-lg{display:none!important}}.visible-print{display:none!important}@media print{.visible-print{display:block!important}table.visible-print{display:table}tr.visible-print{display:table-row!important}th.visible-print,td.visible-print{display:table-cell!important}}.visible-print-block{display:none!important}@media print{.visible-print-block{display:block!important}}.visible-print-inline{display:none!important}@media print{.visible-print-inline{display:inline!important}}.visible-print-inline-block{display:none!important}@media print{.visible-print-inline-block{display:inline-block!important}}@media print{.hidden-print{display:none!important}}</style>
+
+  <link rel="stylesheet" href="libs/uikit/css/uikit.css">
+  <link rel="stylesheet" href="libs/prism/prism.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/fallbacks.css">
+</head>
+<body>
+
+<div class="site">
+
+<!-- SITE-HEADER: Start -->
+<header class="site-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <a href="https://github.com/WahaWaher/sendmail-js">
+          <h1>
+            <small>jQuery</small>
+            <span>SendMail</span><sup class="ver">2.0.5</sup>
+          </h1>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- SITE-HEADER: End -->
+
+<!-- SITE-UNDERHEADER: Start -->
+<div class="site-underheader">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="undr-left">
+          <p>универсальный плагин отправки HTML-форм <br>
+          средствами PHP, jQuery, AJAX.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="undr-right">
+          <a href="https://github.com/WahaWaher/sendmail-js/archive/master.zip" target="_blank" class="uk-button uk-button-accent uk-button-medium">Скачать</a>
+          <a href="https://github.com/WahaWaher/sendmail-js" target="_blank" class="uk-button uk-button-accent uk-button-medium">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SITE-UNDERHEADER: End -->
+
+<div class="site-content">
+  <div class="container">
+    <div class="row">
+
+
+<div class="col-md-3">
+
+  <!-- MENU: Start -->
+  <ul class="nav-doc">
+
+    <li><a href="#setup" class="scroll-to">Подключение</a></li>
+    <li><a href="#options" class="scroll-to">Параметры</a></li>
+    <li><a href="#methods" class="scroll-to">Методы</a></li>
+    <li><a href="#events" class="scroll-to">События</a>
+    <hr></li>
+    
+    <li><a href="#data-attrs" class="scroll-to">Data-атрибуты</a></li>
+    <li><a href="#defaults" class="scroll-to">Параметры по умолчанию</a></li>
+    <li><a href="#reference" class="scroll-to">Рекомендации</a>
+    <hr></li>
+    
+    <li>
+      <a href="#examples" class="scroll-to">Примеры использования</a>
+      <!-- <ul>
+        <li><a href="#examples-1" class="scroll-to">Пример #1</a></li>
+      </ul> -->
+      <hr>
+    </li>
+    
+    <li><a href="#changelog" class="scroll-to">История изменений</a></li>
+    <li><a href="#license" class="scroll-to">Лицензия</a></li>
+    <li><a href="#support" class="scroll-to">Поддержка</a>
+    <hr></li>
+    
+    <li><a href="#top" class="scroll-to">Наверх</a></li>
+
+  </ul>
+  <!-- MENU: End -->
+
+</div>
+<div class="col-md-9">
+
+
+<!-- ОСОБЕННОСТИ: Start -->
+<section class="sct">
+
+  <a id="features" href="#features" class="scroll-to"><h2 class="uk-heading-line"><span>Особенности</span></h2></a>
+
+  <p>Универсальный плагин отправки HTML-форм средствами PHP, jQuery, AJAX.
+    Плагин автоматически собирает значения всех полей формы и в виде HTML-таблицы отправляет на указанный почтовый ящик.
+    Для удобной и надежной отправки писем через SMTP-сервер используется библиотека PHPMailer.</p>
+
+  <ul class="list">
+    <li>Отправка форм без перезагрузки страницы - AJAX</li>
+    <li>Поддержка всех типов полей HTML5</li>
+    <li>Поддержка отправки вложений (single, multiple)</li>
+    <li>Возможность задавать массив получателей, отправителя, тему, редактировать HTML-содержимое письма</li>
+    <li>Сохраняется работоспособность форм при отключенном JS (можно создавать/задвать отдельные страницы и переправлять на них при событиях: "Форма успешная отправлена" и "Ошибка при отправке формы")
+      <br><a href="#reference" class="scroll-to">Рекомендации по оформления подобных форм</a></li>
+  </ul>
+
+</section>
+<!-- ОСОБЕННОСТИ: End -->
+
+
+
+
+  <h2 class="uk-heading-line">Пакетные менеджеры</h2>
+
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <script type="text/plain" class="language-php">
+      # NPM
+      npm i sendmails-js
+
+      # YARN
+      yarn add sendmails-js
+      </script>
+    </div>
+  </div>
+
+
+<!-- ПОДКЛЮЧЕНИЕ: Start -->
+<section class="sct">
+
+  <a id="setup" href="#setup" class="scroll-to"><h2 class="uk-heading-line"><span>Подключение</span></h2></a>
+
+  <h5>1. Подключить последнюю версию <b>jQuery</b> и <b>jquery.sendmail.js</b></h5>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-html">
+
+        &lt;!-- jQuery --&gt;
+        &lt;script src="libs/jquery/dist/jquery.min.js"&gt;&lt;/script&gt;
+
+        &lt;!-- jquery.sendmail.js --&gt;
+        &lt;script src="dist/jquery.sendmail.js"&gt;&lt;/script&gt;
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <h5>2. В корневую директорию сайта скопировать папку mail/ со всем ее содержимым.
+  В файле mail/sendmail.php отредактировать значения следующих обязательных параметров:</h5>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-php">
+
+          $recipients    // Получатели писем
+          $smtp_host     // SMPT-адрес сервера
+          $smtp_port     // TCP-порт
+          $smtp_secure   // SMTP TLS/SSL
+          $smtp_auth     // SMPT-аутентификация
+          $smtp_username // Почтовый ящик, с которого будут отправляться письма
+          $smtp_password // Пароль почтового ящика, с которого будут отправляться письма
+
+          // Остальные параметры по необходимости...
+
+        </code>
+      </pre>
+    </div>
+    <p>Значения параметров: <code class="language-">SMPT-адрес сервера</code>, <code class="language-">TCP-порт</code>, <code class="language-">SMTP TLS/SSL</code>, <code class="language-">SMPT-аутентификация</code> будут зависить от почтового ящика,
+      который будет выбран в качестве отправителя. По умолчанию все настройки заданы для <code class="language-">gmail.com</code>.<br><br>
+      <a href="#ref-smtp" class="scroll-to">Настройки SMTP для наиболее популярных почтовых сервисов</a><br>
+      <a href="#google-smtp-errors" class="scroll-to">Если возникли ошибки при отправке через SMTP Google</a></p>
+  </div>
+
+
+  <h5>3. Создать HTML-форму:</h5>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <script type="text/plain" class="language-html">
+
+        <form class="example" action="mail/sendmail.php" method="POST">
+          <input type="text" name="Имя">
+          <input type="email" name="E-mail">
+          <input type="submit" value="Отправить">
+        </form>
+
+      </script>
+    </div>
+  </div>
+
+  <h5>4. Инициализировать плагин на форме/ах:</h5>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+
+        $('form.example').sendMail();
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+
+</section>
+<!-- ПОДКЛЮЧЕНИЕ: End -->
+
+
+
+<!-- ПАРАМЕТРЫ: Start -->
+<section class="sct">
+
+  <a id="options" class="scroll-to" href="#options"><h2 class="uk-heading-line"><span>Параметры</span></h2></a>
+
+  <div class="table-container">
+    <table class="uk-table uk-table-divider">
+      <!-- <caption>Таблица параметров:</caption> -->
+      <thead>
+        <tr>
+          <th>Опция</th>
+          <th>Тип</th>
+          <th>Поум.</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="uk-label">url</span></td>
+          <td>String</td>
+          <td>'mail/sendmail.php'</td>
+          <td>Путь к PHP-обработчику</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">reset</span></td>
+          <td>Boolean</td>
+          <td>true</td>
+          <td>Очистка полей формы после успешной отправки</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">freeze</span></td>
+          <td>Boolean</td>
+          <td>0</td>
+          <td>Предотвращает повторные попытки отправки формы на указанный промежуток времени, мс<br>
+          <small>По умолчанию, при значении 0, повторная отправка формы становится доступна по завершению предыдущего запроса</small></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="uk-heading-line">Примеры использования параметров</h3>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+
+        $('form.example').sendMail({
+          url: false,
+          reset: 'sendmail.php'
+        });
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+</section>
+<!-- ПАРАМЕТРЫ: End -->
+
+
+
+<!-- ПАРАМЕТРЫ: Start -->
+<section class="sct">
+
+  <a id="options" class="scroll-to" href="#options"><h2 class="uk-heading-line"><span>Параметры: sendmail.php</span></h2></a>
+
+  <div class="table-container">
+    <table class="uk-table uk-table-divider">
+      <!-- <caption>Таблица параметров:</caption> -->
+      <thead>
+        <tr>
+          <th>Опция</th>
+          <th>Тип</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="uk-label">$recipients</span></td>
+          <td>Array</td>
+          <td>Получатели писем</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$subject</span></td>
+          <td>String</td>
+          <td>Тема письма</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$before_table</span></td>
+          <td>String</td>
+          <td>HTML-содержимое до таблицы</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$after_table</span></td>
+          <td>String</td>
+          <td>HTML-содержимое после таблицы</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$sep</span></td>
+          <td>String</td>
+          <td>Разделитель между значениями (использ. при форм. HTML-содержимого письма). Например, при отображении нескольких выбранных занчений в select multiple</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$smtp_host</span></td>
+          <td>String</td>
+          <td>SMPT-адрес сервера</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$smtp_port</span></td>
+          <td>Number</td>
+          <td>TCP-порт</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$smtp_secure</span></td>
+          <td>String</td>
+          <td>SMTP TLS/SSL</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$smtp_auth</span></td>
+          <td>Boolean</td>
+          <td>SMPT-аутентификация</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$smtp_username</span></td>
+          <td>String</td>
+          <td>Почтовый ящик, с которого будут отправляться письма</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$smtp_password</span></td>
+          <td>String</td>
+          <td>Пароль почтового ящика, с которого будут отправляться письма</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$success_page</span></td>
+          <td>String</td>
+          <td>Ссылка на страницу (если JS отключен): Успешная отправка формы</td>
+        </tr>
+        <tr>
+          <td><span class="uk-label">$error_page</span></td>
+          <td>String</td>
+          <td>Ссылка на страницу (если JS отключен): Ошибка при отправке формы</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<!-- ПАРАМЕТРЫ: End -->
+
+
+
+<!-- МЕТОДЫ: Start -->
+<section class="sct">
+
+  <a id="methods" class="scroll-to" href="#methods"><h2 class="uk-heading-line"><span>Методы</span></h2></a>
+
+  <div class="table-container">
+    <table class="uk-table uk-table-divider">
+        <!-- <caption>Таблица публичных методов:</caption> -->
+        <thead>
+            <tr>
+                <th>Метод</th>
+                <th>Аргументы</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="uk-label">init</span></td>
+             <td>options</td>
+             <td>Инициализация</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">destroy</span></td>
+             <td>-</td>
+             <td>Деинициализация</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">reinit</span></td>
+             <td>newOpts</td>
+             <td>Реинициализация</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">send</span></td>
+             <td>-</td>
+             <td>Отправка формы</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h3 class="uk-heading-line">Примеры использования методов</h3>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+
+        var options = { /* Параметры... */ },
+          newOpts = { /* Новые параметры... */ };
+
+        $('form.example').sendMail('init', options); // Инициализация с польз. пар-ми
+        $('form.example').sendMail(options); // Инициализация с польз. пар-ми
+        $('form.example').sendMail(); // Инициализация с пар-ми поум.
+        $('form.example').sendMail('destroy'); // Деинициализация
+        $('form.example').sendMail('reinit', newOpts); // Реинициализация с новыми пар-ми
+        $('form.example').sendMail('reinit'); // Реинициализация с текущими пар-ми
+        $('form.example').sendMail('send'); // Отправка формы
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+</section>
+<!-- МЕТОДЫ: End -->
+
+
+
+<!-- СОБЫТИЯ: Start -->
+<section class="sct">
+
+  <a id="events" class="scroll-to" href="#events"><h2 class="uk-heading-line"><span>События</span></h2></a>
+
+  <div class="table-container">
+    <table class="uk-table uk-table-divider">
+        <thead>
+            <tr>
+                <th>Событие</th>
+                <th>Аргументы</th>
+                <th>Описание</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="uk-label">beforeInit.sml</span></td>
+             <td>e, instance, form</td>
+             <td>Перед началом инициализации</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">afterInit.sml</span></td>
+             <td>e, instance, form</td>
+             <td>После инициализации</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">beforeSend.sml</span></td>
+             <td>e, instance, form</td>
+             <td>Перед отправкой формы</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">afterSend.sml</span></td>
+             <td>e, instance, form, response</td>
+             <td>После попытки отправки формы, независимо от результата</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">success.sml</span></td>
+             <td>e, instance, form, response</td>
+             <td>Успешная отправка AJAX-запроса. Форма отправлена</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">serverError.sml</span></td>
+             <td>e, instance, form, response</td>
+             <td>Ошибка при отправке AJAX-запроса</td>
+          </tr>
+          <tr>
+            <td><span class="uk-label">ajaxError.sml</span></td>
+             <td>e, instance, form, response</td>
+             <td>Ошибка на сервере при отправке формы</td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <h3 class="uk-heading-line">Примеры использования событий</h3>
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+          var example = $('form.example');
+
+          example.on('success.sml', function(e, instance, form, response) {
+            console.log( 'success: ', e, instance, form, response );
+            /* Аргументы:
+              e - объект события
+              instance - экз. класса SendMail для элемента, на котором вызвано событие
+              form - форма, HTML-элемент
+              response - ответ
+            */
+          });
+
+          example.sendMail(); // Инициализация
+        </code>
+      </pre>
+    </div>
+  </div>
+
+</section>
+<!-- СОБЫТИЯ: End -->
+
+
+<!-- DATA-АТРИБУТЫ: Start -->
+<section class="sct">
+
+  <a id="data-attrs" class="scroll-to" href="#data-attrs"><h2 class="uk-heading-line"><span>Data-атрибуты</span></h2></a>
+  
+  <p>Параметры в data-атрибуте имеют наивысший приоритет. Они переопределят параметры по умолчанию, а так же пользовательские параметры заданные при инициализации. Значение атрибута - валидный JSON.</p>
+  
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <script type="text/plain" class="language-html">
+        <form data-sendmail='{
+          "reset": false,
+          "url": "sendmail.php"
+        }'></form>
+      </script>
+    </div>
+  </div>
+
+</section>
+<!-- DATA-АТРИБУТЫ: End -->
+
+
+
+<!-- ПЕРЕОПРЕДЕЛЕНИЕ-ПАРАМЕТРОВ: Start -->
+<section class="sct">
+
+  <a id="defaults" class="scroll-to" href="#defaults"><h2 class="uk-heading-line"><span>Переопределение параметров по умолчанию</span></h2></a>
+  
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+          /* Изменение параметров по умолчанию (свойство): */
+          $.fn.sendMail.defaults.reset = false;
+
+          /* Изменение параметров по умолчанию (объект): */
+          $.fn.sendMail.defaults = $.extend(true, {},$.fn.sendMail.defaults, {
+            reset: false,
+            url: 'sendmail.php'
+          });
+
+          /* Далее инициализация... */
+          $('form.example').sendMail();
+        </code>
+      </pre>
+    </div>
+  </div>
+
+</section>
+<!-- ПЕРЕОПРЕДЕЛЕНИЕ-ПАРАМЕТРОВ: End -->
+
+
+
+<!-- РЕКОМЕНДАЦИИ: Start -->
+<section class="sct">
+
+  <a id="reference" class="scroll-to" href="#reference"><h2 class="uk-heading-line"><span>Рекомендации</span></h2></a>
+  <ul>
+
+    <li>
+      <p>Для поддержки работоспособности формы в случае отключенного в браузере JS, всегда указывать в теге
+        <code class="lang-html inline">&lt;form&gt;</code> атрибуты <code class="language- inline">action=""</code> и <code class="language- inline">method=""</code>
+        с актуальными значениями.</p>
+      
+      <div class="highlight-block">
+        <div class="highlight-header">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+        </div>
+        <div class="highlight">
+          <script type="text/plain" class="language-html">
+            <form action="mail/sendmail.php" method="POST"></form>
+          </script>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <p>Для отправки вложений, обязательно наличие аттрибута <code class="language- inline">enctype="multipart/form-data"</code> в теге <code class="lang-html inline">&lt;form&gt;</code></p>
+      
+      <div class="highlight-block">
+        <div class="highlight-header">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+        </div>
+        <div class="highlight">
+          <script type="text/plain" class="language-html">
+            <form action="mail/sendmail.php" method="POST" enctype="multipart/form-data">
+              <input type="file" name="upload">
+            </form>
+          </script>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <p>Для отправки нескольких вложений из одного поля <code class="lang-html inline">&lt;input type="file"&gt;</code>,
+        обязательно наличие конструкции <code class="language- inline">[]</code> в атрибуте
+        <code class="language- inline">name="upload[]"</code>,
+        а также наличие атрибута <code class="language- inline">multiple</code>.</p>
+      
+      <div class="highlight-block">
+        <div class="highlight-header">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+        </div>
+        <div class="highlight">
+          <script type="text/plain" class="language-html">
+            <form action="mail/sendmail.php" method="POST" enctype="multipart/form-data">
+              <input type="file" name="upload[]" multiple>
+            </form>
+          </script>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <p>При использовании <code class="language-">&lt;select multiple&gt;</code>, обязательно наличие конструкции <code class="language- inline">[]</code> в атрибуте <code class="language- inline">name="choose-colors[]"</code></p>
+      
+      <div class="highlight-block">
+        <div class="highlight-header">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+        </div>
+        <div class="highlight">
+          <script type="text/plain" class="language-html">
+            <select name="choose-colors[]" multiple>
+              <option value="green">Зеленый</option>    
+              <option value="blue">Синий</option>    
+              <option value="red">Красный</option>
+            </select>
+          </script>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <p>Прикрепление файла к письму из sendmail.php (ссылка на файл, относ. путь):</p>
+      
+      <div class="highlight-block">
+        <div class="highlight-header">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+        </div>
+        <div class="highlight">
+          <script type="text/plain" class="language-php">
+            $mail->addAttachment($_SERVER["DOCUMENT_ROOT"] . '/folder/file.txt', 'file.txt');
+          </script>
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <p>Файлы <code class="language-">error.html</code> и <code class="language-">success.html</code> не обязательны.
+        Если у пользователя в браузере отключен JS или по каким-либо причинам не удалось отправить форму AJAX-ом,
+        перенаправление будет происходить именно на эти страницы.
+        Отключить перенаправление можно в файле <code class="language-">sendmail.php</code>,
+        установив переменным <code class="language-">$success_page</code> и <code class="language-">$error_page</code> пустые значения или false.</p>
+    </li>
+
+    <li id="ref-smtp">
+      <p>SMPT-адреса серверов наиболее популярных почтовых сервисов (<code class="language-">sendmail.php</code>, <code class="language-">$smtp_host</code>):</p>
+      
+      <div class="table-container">
+        <table class="uk-table uk-table-divider">
+          <thead>
+            <tr>
+              <th>Почтовый сервис</th>
+              <th>SMTP-адрес</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="uk-label">Gmail.com</span></td>
+              <td>smtp.gmail.com</td>
+            </tr>
+            <tr>
+              <td><span class="uk-label">Mail.ru</span></td>
+              <td>smtp.mail.ru</td>
+            </tr>
+            <tr>
+              <td><span class="uk-label">Yandex.ru</span></td>
+              <td>smtp.yandex.ru</td>
+            </tr>
+            <tr>
+              <td><span class="uk-label">Rambler.ru</span></td>
+              <td>mail.rambler.ru</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Следующие параметры зачастую у всех сервисов одни и те же.</p>
+
+      <div class="highlight-block">
+        <div class="highlight-header">
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <span class="circle"></span>
+          <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+        </div>
+        <div class="highlight">
+          <script type="text/plain" class="language-php">
+            $smtp_port = 465; // TCP-порт
+            $smtp_secure = 'ssl'; // SMTP TLS/SSL
+            $smtp_auth = true; // SMPT-аутентификация
+          </script>
+        </div>
+      </div>
+
+    </li>
+
+    <li id="google-smtp-errors">
+      <p>Если при отправке форм через SMTP Google, возникают ошибки, в первую очередь рекомендуется произвести следющие действия:</p>
+      
+      <ul>
+        <li>Зайти на <a href="https://myaccount.google.com" target="_blank">https://myaccount.google.com</a> под используемым в скрипте аккаунтом Google</li>
+        <li>В меню слева перейти по "Безопасность"</li>
+        <li>Ниже "Ненадежные приложения, у которых есть доступ к аккаунту" -> "Открыть доступ"
+          или перейти по ссылке <a href="https://myaccount.google.com/lesssecureapps" target="_blank">https://myaccount.google.com/lesssecureapps</a>
+          и выставить переключатель в положение "Небезопасные приложения разрешены"</li>
+        <li>Перейти по ссылке <a href="https://accounts.google.com/DisplayUnlockCaptcha" target="_blank">https://accounts.google.com/DisplayUnlockCaptcha</a> и нажать "Продолжить"</li>
+      </ul>
+
+    </li>
+
+
+  </ul>
+</section>
+<!-- РЕКОМЕНДАЦИИ: End -->
+
+
+
+<!-- ПРИМЕРЫ: Start -->
+<section class="sct">
+
+  <a id="examples" class="scroll-to" href="#examples"><h2 class="uk-heading-line"><span>Примеры использования</span></h2></a>
+
+
+
+  <!-- Всплывающие окна после отправки -->
+  <h3 id="examples-1" class="uk-heading-bullet">Пример: Всплывающие окна после отправки</h3>
+  <!-- <script>
+    window.addEventListener('load', function () {});
+  </script> -->
+
+  <hr>
+
+  <p>SendMail в связке с <a href="http://fancyapps.com/fancybox/3/" target="_blank">FancyBox</a>. Всплывающие окна на 3 основных события.</p>
+
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <script type="text/plain" class="language-html">
+        
+        <form class="example" action="mail/sendmail.php" method="POST">
+          <input type="text" name="E-mail">
+          <input type="submit" name="Отправить">
+        </form>
+
+      </script>
+    </div>
+  </div>
+
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+          
+          var example = $('form.example');
+
+          // Успешная отправка формы
+          example.on('success.sml', function() {
+
+            // Открыть динамический popup
+            $.fancybox.open('&lt;p&gt;Спасибо! Ваша заявка успешно отправлена!&lt;/p&gt;');
+
+            // Закрыть окно через 5 сек.
+            setTimeout(function() { $.fancybox.close() }, 5000);
+
+          });
+
+          // Ошибка при отправке AJAX-запроса
+          example.on('serverError.sml', function(e, instance, form, response) {
+            
+            $.fancybox.open('&lt;p&gt;Ошибка при отправке AJAX-запроса!&lt;/p&gt;' + '&lt;br&gt;' + response);
+            setTimeout(function() { $.fancybox.close() }, 5000);
+
+          });
+
+          // Ошибка на сервере при отправке формы
+          example.on('ajaxError.sml', function(e, instance, form, response) {
+            
+            $.fancybox.open('&lt;p&gt;Ошибка на сервере при отправке формы!&lt;/p&gt;' + '&lt;br&gt;' + response);
+            setTimeout(function() { $.fancybox.close() }, 5000);
+
+          });
+
+          // Инициализация...
+          example.sendMail();
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+
+  <!-- Валидация формы -->
+  <h3 id="examples-1" class="uk-heading-bullet">Пример: Валидация формы</h3>
+
+  <p>Валидация формы на примере <a href="https://jqueryvalidation.org/validate/" target="_blank">jQuery Validation Plugin</a></p>
+
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+
+          var example = $('formform.example');
+          
+          // Убрать обработчик для "Submit" с формы
+          example.on("afterInit.sml", function(e, instance, form) {
+            $(form).off( 'submit.sml-' + instance.nsid );
+          });
+
+          // Инициализация SendMail
+          example.sendMail({
+            // Параметры SendMail...
+          });
+
+          // Инициализация Validator
+          example.validate({
+
+            // Параметры валидатора...
+
+            submitHandler: function(form) {
+
+              // Валидация пройдена - Отправка формы
+              $(form).sendMail('send');
+
+            }
+          });
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+
+  <!-- Внесение доп. данных в таблицу письма -->
+  <h3 id="examples-1" class="uk-heading-bullet">Пример: Внесение доп. данных в таблицу письма</h3>
+
+  <p>Свойства объекта <code class="language-">instance.addData</code> (ключ-значение) будут добавлены к общим данным формы <br>
+  и выведены в таблице Email-письма.</p>
+  
+  <div class="highlight-block">
+    <div class="highlight-header">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <svg class="svg-icon"><use xlink:href="svg/svg-sprite.svg#svg-code"></use></svg>
+    </div>
+    <div class="highlight">
+      <pre>
+        <code class="language-javascript">
+          
+          var example = $('form.example');
+
+          // Перед отправкой формы
+          example.on('beforeSend.sml', function(e, instance) {
+            
+            // Наполнить объект произвольными данными
+            instance.addData = {
+              "Время": "15:30:45",
+              "Температура": "+25С"
+            };
+
+          });
+
+          // Инициализация...
+          example.sendMail();
+
+        </code>
+      </pre>
+    </div>
+  </div>
+
+
+</section>
+<!-- ПРИМЕРЫ: End -->
+
+
+
+<!-- ИСТОРИЯ-ИЗМЕНЕНИЙ: Start -->
+<section class="sct">
+
+  <a id="changelog" class="scroll-to" href="#changelog"><h2 class="uk-heading-line"><span>История изменений</span></h2></a>
+
+  <h3>2.0.5 - 23.02.2019</h3>
+  <ul>
+    <li>Изменены наименования некоторых событий</li>
+  </ul>
+
+  <h3>2.0.2 - 15.01.2019</h3>
+  <ul>
+    <li>Полностью переработана структура плагина</li>
+    <li>Функции обратного вызова заменены соотв. событиями</li>
+    <li>Исправлено содержимое ответов от сервера, получ. в событиях "afterSend.sml", "success.sml", "serverError.sml", "ajaxError.sml". Ошибки от PHPMailer по умолчанию переведены на русский язык.</li>
+    <li>Изменена логика перенаправлений на страницы "success.html" и "error.html"</li>
+    <li>Добавлена возможность расширить передваемые из формы в таблицу данные, собственными, при помощи события "beforeSend.sml"</li>
+    <li>Добавлен параметр "freeze", запрещающий повторную отправку формы на указанное время</li>
+    <li>Другие мелкие исправления</li>
+  </ul>
+
+  <h3>1.0.8 - 07.10.2018</h3>
+  <ul>
+    <li>Исправлены проблемы с путями в файле sendmail.php</li>
+    <li>Незначительные правки в коде</li>
+  </ul>
+
+  <h3>1.0.7 - 22.09.2018</h3>
+  <ul>
+    <li>Обновление библиотеки PHPMailer до версии 6.0.5</li>
+  </ul>
+
+  <h3>1.0.6 - 21.08.2018</h3>
+  <ul>
+    <li>Колбэк "beforeSend" прерывает отправку письма при "return false"</li>
+    <li>Некоторые правки для комфортной работы с jQuery Validation Plugin (пример в demo/index.html)</li>
+  </ul>
+
+  <h3>1.0.3 - 20.08.2018</h3>
+  <ul>
+    <li>Незначительные правки в коде (не повливают на работу плагина)</li>
+  </ul>
+
+  <h3>1.0.2 - 18.08.2018</h3>
+  <ul>
+    <li>Добавлена поддержка цепочек вызовов</li>
+    <li>Незначительные изменения в именах некоторых переменных</li>
+    <li>Правки в readme.md</li>
+  </ul>
+  
+
+</section>
+<!-- ИСТОРИЯ-ИЗМЕНЕНИЙ: End -->
+
+
+
+<!-- ЛИЦЕНЗИЯ: Start -->
+<section class="sct">
+
+  <a id="license" class="scroll-to" href="#license"><h2 class="uk-heading-line"><span>Лицензия (MIT)</span></h2></a>
+
+  <p>Copyright (c) 2018-2019 Sergey Kravchenko</p>
+  <p>Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, слияние, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, а также лицам, которым предоставляется данное Программное Обеспечение, при соблюдении следующих условий:</p>
+  <p>Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части данного Программного Обеспечения.</p>
+  <p>ДАННОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНО ВЫРАЖЕННЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ ГАРАНТИИ ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ ПО ЕГО КОНКРЕТНОМУ НАЗНАЧЕНИЮ И ОТСУТСТВИЯ НАРУШЕНИЙ, НО НЕ ОГРАНИЧИВАЯСЬ ИМИ. НИ В КАКОМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ПО КАКИМ-ЛИБО ИСКАМ, ЗА УЩЕРБ ИЛИ ПО ИНЫМ ТРЕБОВАНИЯМ, В ТОМ ЧИСЛЕ, ПРИ ДЕЙСТВИИ КОНТРАКТА, ДЕЛИКТЕ ИЛИ ИНОЙ СИТУАЦИИ, ВОЗНИКШИМ ИЗ-ЗА ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.</p>
+
+</section>
+<!-- ЛИЦЕНЗИЯ: End -->
+
+
+
+<!-- ПОДДЕРЖКА: Start -->
+<section class="sct">
+
+  <a id="support" class="scroll-to" href="#support"><h2 class="uk-heading-line"><span>Поддержка</span></h2></a>
+  Решение проблем/багов плагина, а также замечания и пожелания в <a href="https://github.com/WahaWaher/sendmail-js/issues" target="_blank">соответствующей теме</a> 
+  <p>По всем другим вопросам: <a href="mailto:wahawaher@gmail.com" title="Написать на wahawaher@gmail.com">wahawaher@gmail.com</a></p>
+
+  
+</section>
+<!-- ПОДДЕРЖКА: End -->
+
+
+
+</div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER: Start -->
+<footer class="site-footer">
+  <div class="container">
+    
+    <p class="center"><small>jQuery</small> SendMail &mdash; 2018-2019</p>
+
+  </div>
+</footer>
+<!-- FOOTER: End -->
+
+  </div>
+
+  <!-- Back to top button -->
+  <div id="top-button"></div>
+
+  <script src="libs/jquery/dist/jquery.min.js"></script>
+  <script src="libs/easings/easings.js"></script>
+  <script src="libs/svg4everybody/dist/svg4everybody.js"></script>
+  <script src="libs/uikit/js/uikit.js"></script>
+  <script src="libs/prism/prism.js"></script>
+  <script src="js/jquery.sendmail.js"></script>
+  <script src="js/common.js"></script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(82898821, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/82898821" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</body>
+</html>
