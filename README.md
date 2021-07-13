@@ -11,7 +11,7 @@ _Универсальный плагин отправки HTML-форм сред
 
 <br>
 
-[Документация](https://wahawaher.github.io/flextabs-js)
+[Документация](https://wahawaher.github.io/sendmail-js)
 
 ## CDN:
 [https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/](https://cdn.jsdelivr.net/gh/WahaWaher/sendmail-js/dist/)
